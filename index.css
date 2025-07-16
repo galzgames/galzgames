@@ -65,6 +65,7 @@ h1, h2 ,h3 ,h4{
     padding: 10px; /* Adiciona espaço interno entre o texto e a borda */
     border-radius: 10px; /* Adiciona cantos arredondados */
     text-align: center; /* Centraliza o texto */
+}
 
 footer {
     display: flex;
