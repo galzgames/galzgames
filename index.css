@@ -55,7 +55,7 @@ img {
     }
 }
 
-h1, h2, h3, h4{
+h1, h2 ,h3 ,h4{
     font-family: 'Press Start 2P', sans-serif; /* Aplica a fonte retro aos títulos */
     animation: color-change 3s infinite; /* Aplica a animação com duração de 3 segundos e repetição infinita */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
@@ -65,7 +65,6 @@ h1, h2, h3, h4{
     padding: 10px; /* Adiciona espaço interno entre o texto e a borda */
     border-radius: 10px; /* Adiciona cantos arredondados */
     text-align: center; /* Centraliza o texto */
-}
 
 footer {
     display: flex;
