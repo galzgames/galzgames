@@ -74,6 +74,22 @@
         .back-button:hover {
             background-color: #0056b3;
         }
+        .history-era {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ccc;
+        }
+        .history-era:last-child {
+            border-bottom: none;
+        }
+        .history-era img {
+            margin: 10px 8px;
+            max-width: 220px;
+            border-radius: 10px;
+            border: 3px solid #222;
+            background: #fff;
+            display: inline-block;
+        }
         @media (max-width: 600px) {
             .history-section {
                 padding: 10px;
@@ -87,6 +103,13 @@
                 font-size: 14px;
             }
         }
+        @media (max-width: 700px) {
+            .history-era img {
+                max-width: 100%;
+                margin: 10px 0;
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -94,37 +117,87 @@
     <div class="container">
         <div class="history-section">
             <h2>História dos Videogames</h2>
-            <p>
-                A história dos videogames começou na década de 1950, quando os primeiros experimentos com jogos eletrônicos foram realizados. Um dos primeiros jogos conhecidos foi "Tennis for Two", criado por William Higinbotham em 1958. Este jogo simples simulava uma partida de tênis em um osciloscópio.
+
+            <!-- Anos 1950-1960 -->
+            <div class="history-era">
+                <h3>Anos 1950-1960: Os Primeiros Passos</h3>
+                <p>
+                    Os videogames começaram como experimentos científicos. Em 1958, William Higinbotham criou <strong>"Tennis for Two"</strong> em um osciloscópio, considerado um dos primeiros jogos eletrônicos interativos. Em 1962, Steve Russell desenvolveu <strong>"Spacewar!"</strong> no MIT, um dos primeiros jogos para computador.
+                </p>
                 <img src="./img/tennis_for_two.jpg" alt="Tennis for Two">
-            </p>
-            <p>
-                Na década de 1970, os videogames começaram a ganhar popularidade com o lançamento de consoles domésticos como o Magnavox Odyssey e o Atari 2600. O Atari 2600, lançado em 1977, foi um marco na indústria dos videogames, trazendo jogos como "Pong" e "Space Invaders" para as casas das pessoas.
+                <img src="./img/spacewar.jpg" alt="Spacewar!">
+            </div>
+
+            <!-- Anos 1970 -->
+            <div class="history-era">
+                <h3>Anos 1970: O Nascimento da Indústria</h3>
+                <p>
+                    A década de 1970 marcou o início da indústria dos videogames. O <strong>Pong</strong> (1972), da Atari, foi o primeiro grande sucesso comercial. O <strong>Magnavox Odyssey</strong> (1972) foi o primeiro console doméstico. O <strong>Atari 2600</strong> (1977) popularizou os jogos em cartucho.
+                </p>
+                <img src="./img/pong.jpg" alt="Pong">
+                <img src="./img/magnavox_odyssey.jpg" alt="Magnavox Odyssey">
                 <img src="./img/atari_2600.jpg" alt="Atari 2600">
-            </p>
-            <p>
-                A década de 1980 viu o surgimento de empresas icônicas como Nintendo e Sega. A Nintendo lançou o Nintendo Entertainment System (NES) em 1985, que se tornou um enorme sucesso com jogos como "Super Mario Bros." e "The Legend of Zelda". A Sega, por sua vez, lançou o Sega Genesis em 1988, que competiu diretamente com o NES.
+            </div>
+
+            <!-- Anos 1980 -->
+            <div class="history-era">
+                <h3>Anos 1980: A Era de Ouro dos Arcades e Consoles</h3>
+                <p>
+                    Os anos 1980 foram marcados pelo boom dos arcades, com clássicos como <strong>Pac-Man</strong>, <strong>Donkey Kong</strong> e <strong>Space Invaders</strong>. Nos lares, o <strong>Nintendo Entertainment System (NES)</strong> e o <strong>Sega Master System</strong> dominaram, trazendo franquias como <strong>Super Mario Bros.</strong> e <strong>Sonic</strong>.
+                </p>
+                <img src="./img/pacman.jpg" alt="Pac-Man">
                 <img src="./img/nes.jpg" alt="Nintendo Entertainment System">
+                <img src="./img/sega_master_system.jpg" alt="Sega Master System">
+                <img src="./img/donkey_kong_arcade.jpg" alt="Donkey Kong Arcade">
+            </div>
+
+            <!-- Anos 1990 -->
+            <div class="history-era">
+                <h3>Anos 1990: Consoles 16 e 32 bits, e o 3D</h3>
+                <p>
+                    A década de 1990 trouxe gráficos melhores e o início do 3D. O <strong>Super Nintendo (SNES)</strong> e o <strong>Sega Genesis</strong> travaram uma batalha épica. O <strong>PlayStation</strong> (1994) revolucionou com jogos em CD e gráficos 3D, enquanto o <strong>Nintendo 64</strong> trouxe experiências inovadoras como <strong>Super Mario 64</strong>.
+                </p>
+                <img src="./img/snes.jpg" alt="Super Nintendo">
                 <img src="./img/sega_genesis.jpg" alt="Sega Genesis">
-            </p>
-            <p>
-                Nos anos 1990, a indústria dos videogames continuou a crescer com o lançamento de consoles como o Super Nintendo Entertainment System (SNES) e o Sony PlayStation. O PlayStation, lançado em 1994, revolucionou a indústria com seus gráficos 3D e uma vasta biblioteca de jogos.
                 <img src="./img/playstation.jpg" alt="Sony PlayStation">
-            </p>
-            <p>
-                A década de 2000 trouxe a era dos consoles modernos com o lançamento do PlayStation 2, Xbox e Nintendo GameCube. O PlayStation 2, lançado em 2000, se tornou o console mais vendido de todos os tempos. A Microsoft entrou no mercado de consoles com o Xbox, lançado em 2001, que trouxe jogos como "Halo: Combat Evolved".
+                <img src="./img/nintendo64.jpg" alt="Nintendo 64">
+            </div>
+
+            <!-- Anos 2000 -->
+            <div class="history-era">
+                <h3>Anos 2000: Consoles Modernos e Jogos Online</h3>
+                <p>
+                    O <strong>PlayStation 2</strong> tornou-se o console mais vendido da história. A <strong>Microsoft</strong> entrou no mercado com o <strong>Xbox</strong>. O <strong>GameCube</strong> e o <strong>Dreamcast</strong> também marcaram época. O <strong>Xbox Live</strong> e o <strong>PlayStation Network</strong> popularizaram o jogo online.
+                </p>
                 <img src="./img/ps2.jpg" alt="PlayStation 2">
                 <img src="./img/xbox.jpg" alt="Xbox">
-            </p>
-            <p>
-                Na década de 2010, os videogames se tornaram ainda mais avançados com o lançamento do PlayStation 4, Xbox One e Nintendo Switch. Esses consoles trouxeram gráficos de alta definição, jogos online e experiências de realidade virtual.
+                <img src="./img/gamecube.jpg" alt="GameCube">
+                <img src="./img/dreamcast.jpg" alt="Dreamcast">
+            </div>
+
+            <!-- Anos 2010-2020 -->
+            <div class="history-era">
+                <h3>Anos 2010-2020: Alta Definição, Realidade Virtual e Mobile</h3>
+                <p>
+                    Consoles como <strong>PlayStation 4</strong>, <strong>Xbox One</strong> e <strong>Nintendo Switch</strong> trouxeram gráficos de alta definição e experiências inovadoras. O mercado mobile explodiu com jogos como <strong>Angry Birds</strong> e <strong>Pokémon GO</strong>. A <strong>realidade virtual</strong> e o <strong>streaming</strong> começaram a ganhar espaço.
+                </p>
                 <img src="./img/ps4.jpg" alt="PlayStation 4">
                 <img src="./img/xbox_one.jpg" alt="Xbox One">
                 <img src="./img/nintendo_switch.jpg" alt="Nintendo Switch">
-            </p>
-            <p>
-                Hoje, os videogames são uma das formas de entretenimento mais populares do mundo, com uma indústria que gera bilhões de dólares em receita. Os jogos são jogados em consoles, computadores e dispositivos móveis, e continuam a evoluir com novas tecnologias e inovações.
-            </p>
+                <img src="./img/pokemon_go.jpg" alt="Pokémon GO">
+                <img src="./img/oculus_quest.jpg" alt="Oculus Quest VR">
+            </div>
+
+            <!-- Atualidade -->
+            <div class="history-era">
+                <h3>Atualidade: O Futuro dos Games</h3>
+                <p>
+                    Hoje, os videogames são uma das maiores formas de entretenimento do mundo, com eSports, jogos em nuvem, inteligência artificial e experiências cada vez mais imersivas. O futuro promete ainda mais inovações!
+                </p>
+                <img src="./img/ps5.jpg" alt="PlayStation 5">
+                <img src="./img/xbox_series_x.jpg" alt="Xbox Series X">
+                <img src="./img/steamdeck.jpg" alt="Steam Deck">
+            </div>
         </div>
     </div>
 
