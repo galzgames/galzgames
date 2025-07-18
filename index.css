@@ -861,7 +861,7 @@ img {
             font-weight: bold;
             text-shadow: 1px 1px 2px rgb(161, 221, 241);
         }
-,.evento-poster {
+.evento-poster {
     display: flex;
     flex-direction: column;
     align-items: center;
