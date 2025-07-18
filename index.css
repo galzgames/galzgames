@@ -879,5 +879,8 @@ img {
     background: #fff;
     display: block;
     object-fit: contain;
-    margin: 0 auto; /* Centraliza horizontalmente em qualquer contexto */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
