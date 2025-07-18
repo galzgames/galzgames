@@ -205,6 +205,9 @@ footer {
 .right-gif {
     margin-right: 20px;
 }
+img[src$=".gif"] {
+    border-radius: 0 !important;
+}
 
 .back-button {
     position: fixed;
