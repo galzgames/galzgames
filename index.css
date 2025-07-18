@@ -861,3 +861,22 @@ img {
             font-weight: bold;
             text-shadow: 1px 1px 2px rgb(161, 221, 241);
         }
+,.evento-poster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.evento-poster-img {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 0 !important;
+    box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
+    background: #fff;
+    display: block;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+}
