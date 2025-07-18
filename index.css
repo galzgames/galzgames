@@ -187,7 +187,7 @@ footer {
     width: 100px; /* Ajuste o tamanho conforme necessário */
     height: auto;
     border: none; /* Remove borda */
-    border-radius: 10px; /* Adiciona cantos arredondados */
+    border-radius: 0px; /* Adiciona cantos arredondados */
 }
 
 .left-gif {
