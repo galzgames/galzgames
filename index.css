@@ -870,9 +870,9 @@ img {
 }
 
 .evento-poster-img {
-    width: 150%;
-    max-width: 400px;
-    min-width: 200px;
+    width: 100%;
+    max-width: 800px;
+    min-width: 400px;
     height: auto;
     border-radius: 0 !important;
     box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
