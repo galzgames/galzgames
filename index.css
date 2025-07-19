@@ -187,7 +187,7 @@ footer {
     width: 100px; /* Ajuste o tamanho conforme necessário */
     height: auto;
     border: none; /* Remove borda */
-    border-radius: 0px; /* Adiciona cantos arredondados */
+    border-radius: 10px; /* Adiciona cantos arredondados */
 }
 
 .left-gif {
@@ -204,9 +204,6 @@ footer {
 
 .right-gif {
     margin-right: 20px;
-}
-img[src$=".gif"] {
-    border-radius: 0 !important;
 }
 
 .back-button {
@@ -871,19 +868,107 @@ img {
     justify-content: center;
     width: 100%;
 }
-
 .evento-poster-img {
-    width: 100%;
-    max-width: 800px;
-    min-width: 400px;
+    width: 50%;
+    max-width: 400px;
     height: auto;
     border-radius: 0 !important;
     box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
     background: #fff;
     display: block;
     object-fit: contain;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.evento-info-flex {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.evento-info-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    flex: 1 1 120px;
+    align-items: center;
+    min-width: 120px;
+    max-width: 150px;
+}
+
+.evento-info-img {
+    width: 100%;
+    max-width: 120px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
+    background: #fff;
+    display: block;
+}
+
+.evento-info-text {
+    flex: 2 1 320px;
+    max-width: 420px;
+    min-width: 240px;
+    color: #fff700;
+    font-family: 'Press Start 2P', 'Arial Black', Arial, sans-serif;
+    text-shadow: 2px 2px 0 #000, 0 0 8px #ff004f, 0 0 2px #fff;
+    background: rgba(0,0,0,0.25);
+    border-radius: 14px;
+    padding: 22px 18px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.evento-info-text h3, .evento-info-text h4 {
+    margin: 10px 0 8px 0;
+    color: #ff004f;
+    text-shadow: 2px 2px 0 #fff700, 0 0 8px #000;
+    font-size: 1.2em;
+}
+
+.evento-info-text ul {
+    text-align: left;
+    margin: 10px 0 0 0;
+    padding-left: 18px;
+    color: #fff;
+    font-size: 0.95em;
+}
+
+@media (max-width: 900px) {
+    .evento-info-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+    .evento-info-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 100vw;
+        min-width: 0;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .evento-info-img {
+        max-width: 80px;
+        aspect-ratio: 1/1;
+    }
+    .evento-info-text {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 12px 5vw;
+    }
 }
