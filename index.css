@@ -948,6 +948,7 @@ img {
     font-size: 0.95em;
 }
 
+/* Responsivo para celular */
 @media (max-width: 900px) {
     .evento-info-flex {
         flex-direction: column;
