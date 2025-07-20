@@ -906,14 +906,10 @@ img {
 }
 
 .evento-info-img {
-    width: 100%;
-    max-width: 120px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
-    background: #fff;
-    display: block;
+        max-width: 80px;
+        width: 80px;
+        height: 80px;
+        margin: 0 4px 6px 4px;
 }
 
 .evento-info-text {
