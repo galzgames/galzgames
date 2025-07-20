@@ -869,7 +869,7 @@ img {
     width: 100%;
 }
 .evento-poster-img {
-    width: 50%;
+    width: 100%;
     max-width: 400px;
     height: auto;
     border-radius: 0 !important;
