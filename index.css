@@ -899,10 +899,10 @@ img {
     flex-direction: column;
     justify-content: center;
     gap: 14px;
-    flex: 1 1 120px;
+    flex: 1 1 50px;
     align-items: center;
-    min-width: 120px;
-    max-width: 150px;
+    min-width: 50px;
+    max-width: 50px;
 }
 
 .evento-info-img {
