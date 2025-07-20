@@ -973,3 +973,15 @@ img {
         padding: 12px 5vw;
     }
 }
+/* Garante que GIFs fiquem normais, sem borda, sombra ou arredondamento */
+img[src$=".gif"], .left-gif, .center-gif, .right-gif {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    aspect-ratio: unset !important;
+    object-fit: unset !important;
+    max-width: 100%;
+    display: inline-block;
+}
