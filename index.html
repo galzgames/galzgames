@@ -1,215 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
-    <meta name="google-site-verification" content="8iS9JmZCbbgID0wLc4Q587BxTzwdvRxnLWBdbOBYquA" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galz Games</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="icon" href="./img/album.png" type="image/x-icon">
-    <link rel="canonical" href="https://www.galzgames.retrogamerday.com/pagina" />
-    
-    <style>
-   
-    </style>
-
-    <!-- Firebase App (necessário para inicializar o Firebase) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-
-    <!-- Firebase Database (necessário para usar o Realtime Database) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 </head>
 <body>
-    <!-- Verifica se o usuário está autenticado -->
     <script>
+        // Autenticação simples
         const isAuthenticated = localStorage.getItem('isAuthenticated');
-
-        // Se o usuário não estiver autenticado, redireciona para login.html
-        if (!isAuthenticated) {
-            window.location.href = "login.html";
-        }
-
-        // Solicita o nome do usuário ao carregar a página, se ainda não estiver definido
+        if (!isAuthenticated) window.location.href = "login.html";
         let userName = localStorage.getItem('userName');
         if (!userName) {
             userName = prompt("Digite seu nome para participar do chat:");
-            if (userName) {
-                localStorage.setItem('userName', userName);
-            } else {
-                alert("Você precisa inserir um nome para participar do chat.");
-                window.location.reload();
-            }
+            if (userName) localStorage.setItem('userName', userName);
+            else { alert("Você precisa inserir um nome para participar do chat."); window.location.reload(); }
         }
-
         function logout() {
             localStorage.removeItem('isAuthenticated');
             window.location.href = "login.html";
         }
     </script>
+    <button onclick="logout()" class="logout-btn">Logout</button>
 
-    <button onclick="logout()">Logout</button>
+    <nav class="nav-buttons">
+        <button class="arcade-btn" onclick="window.location.href='inicio.html'">INICIO</button>
+        <button class="arcade-btn" onclick="window.location.href='galeria.html'">GALERIA</button>
+        <button class="arcade-btn" onclick="window.location.href='musicas.html'">MÚSICAS</button>
+        <button class="arcade-btn" onclick="window.location.href='videos.html'">VÍDEOS</button>
+        <button class="arcade-btn" onclick="window.location.href='pesquisa.html'">PESQUISA</button>
+        <button class="arcade-btn" onclick="window.location.href='inscrissoes.html'">INSCRIÇÕES</button>
+        <button class="arcade-btn" onclick="window.location.href='iflame.html'">JOGOS RETRO ON LINE</button>
+    </nav>
 
-<div class="nav-buttons">
-    <button class="arcade-btn" onclick="window.location.href='inicio.html'">INICIO</button>
-    <button class="arcade-btn" onclick="window.location.href='galeria.html'">GALERIA</button>
-    <button class="arcade-btn" onclick="window.location.href='musicas.html'">MÚSICAS</button>
-    <button class="arcade-btn" onclick="window.location.href='videos.html'">VÍDEOS</button>
-    <button class="arcade-btn" onclick="window.location.href='pesquisa.html'">PESQUISA</button>
-    <button class="arcade-btn" onclick="window.location.href='inscrissoes.html'">INSCRIÇÕES</button>
-    <button class="arcade-btn" onclick="window.location.href='iflame.html'">JOGOS RETRO ON LINE</button>
-</div>
+    <header class="evento-poster">
+        <img src="./img/POSTE EVENTO.jpg" alt="Poster RetroGamerDay" class="evento-poster-img">
+        <h1>Sejam bem vindos Gamers</h1>
+        <div class="evento-album">
+            <img src="./img/album.png" alt="Album">
+            <img src="./img/retro gamer day.jpeg" alt="Album">
+        </div>
+    </header>
 
-    <div class="center">
-         <br><br>
-    <div class="evento-poster">
-    <img src="./img/POSTE EVENTO.jpg" alt="Poster RetroGamerDay" class="evento-poster-img">
-    <div class="evento-poster-info">
-        <br><br><br><br>
-       
+    <main>
+        <section class="evento-info-flex">
+            <div class="evento-info-col boardgames-mobile-row">
+                <img src="./img/boardgames/cattan.jpg" alt="Catan" class="evento-info-img">
+                <img src="./img/boardgames/coup.jpg" alt="Coup" class="evento-info-img">
+                <img src="./img/boardgames/marvel.jpg" alt="Marvel" class="evento-info-img">
+                <img src="./img/boardgames/sabo.jpg" alt="Saboteur" class="evento-info-img">
+                <img src="./img/boardgames/war.jpg" alt="War" class="evento-info-img">
+            </div>
+            <div class="evento-info-text">
+                <h2>2º RETROGAMERDAY</h2>
+                <p><strong>Data:</strong> 12 de outubro<br>
+                <strong>Local:</strong> Escola Lápis na Mão</p>
+                <h3>Atrações 2025</h3>
+                <ul>
+                    <li>Mesa de RPG para crianças (com a galera do fazdecontaRPG)</li>
+                    <br><br>
+                    <li>Jogos de fliperama</li>
+                    <br><br>
+                    <li>Jogos de tabuleiro</li>
+                    <br><br>
+                    <li>Jogos de cartas</li>
+                    <br><br>
+                    <li>Jogos de videogame</li>
+                    <br><br>
+                    <li>Torneio de jogos de celular
+                        <br><br>
+                         (Brawl Stars, League of Legends WR - ambos mobile)</li>
+                         <br><br>
+                    <li>Exposição de videogames antigos</li>
+                    <br><br>
+                </ul>
+            </div>
+            <div class="evento-info-col carrossel-mobile-row">
+                <img src="./img/carrosel 2/rgd2024 (1).jpeg" alt="Retro Gamer Day" class="evento-info-img">
+                <img src="./img/carrosel 2/rgd2024 (2).jpeg" alt="Retro Gamer Day" class="evento-info-img">
+                <img src="./img/carrosel 2/rgd2024 (3).jpeg" alt="Retro Gamer Day" class="evento-info-img">
+                <img src="./img/carrosel 2/rgd2024 (4).jpeg" alt="Retro Gamer Day" class="evento-info-img">
+                <img src="./img/carrosel 2/rgd2024 (5).jpeg" alt="Retro Gamer Day" class="evento-info-img">
+            </div>
+        </section>
 
-        <h1>Sejam bem vindos 
-            Gamers</h1>
-        <br><br><br><br>
-        
-       
-       <img src="./img/album.png" alt="Album">
-        <img src="./img/retro gamer day.jpeg" alt="Album">
-<div class="evento-info-flex">
-    <div class="evento-info-col">
-        <img src="./img/boardgames/cattan.jpg" alt="Catan" class="evento-info-img">
-        <img src="./img/boardgames/coup.jpg" alt="Coup" class="evento-info-img">
-        <img src="./img/boardgames/marvel.jpg" alt="Marvel" class="evento-info-img">
-        <img src="./img/boardgames/sabo.jpg" alt="Saboteur" class="evento-info-img">
-        <img src="./img/boardgames/war.jpg" alt="War" class="evento-info-img">
-    </div>
-    <div class="evento-info-text">
-        <br><br><br><br>
-        <h3>2º RETROGAMERDAY</h3>
-        <br><br><br><br>
+        <section class="contador">
+            <a title='Contador de Visitas do MegaContador' href='https://megacontador.com.br/'>
+                <img src='https://megacontador.com.br/img-89txXwEuBNj7amuz-40.gif' alt='Contador de visitas'>
+                <p>RETROGAMER VISITANTE Nº</p>
+            </a>
+        </section>
 
-        <p><strong>Data:</strong> 12 de outubro<br>
-        <strong>Local:</strong> Escola Lápis na Mão</p>
-        <h4>Atrações 2025</h4>
-        <ul>
-            <br><br>
-            <li>Mesa de RPG para crianças (com a galera do fazdecontaRPG)</li>
-            <li>Jogos de fliperama</li>
-            <br><br>
-            <li>Jogos de tabuleiro</li>
-            <br><br>
-            <li>Jogos de cartas</li>
-            <br><br>
-            <li>Jogos de videogame</li>
-            <br><br>
-            <li>Torneio de jogos de celular (Brawl Stars, League of Legends WR - ambos mobile)</li>
-            <br><br>
-            <li>Exposição de videogames antigos</li>
-            <br><br>
-        </ul>
-    </div>
-    <div class="evento-info-col">
-        <img src="./img/carrosel 2/rgd2024 (1).jpeg" alt="Retro Gamer Day" class="evento-info-img">
-        <img src="./img/carrosel 2/rgd2024 (2).jpeg" alt="Retro Gamer Day" class="evento-info-img">
-        <img src="./img/carrosel 2/rgd2024 (3).jpeg" alt="Retro Gamer Day" class="evento-info-img">
-        <img src="./img/carrosel 2/rgd2024 (4).jpeg" alt="Retro Gamer Day" class="evento-info-img">
-        <img src="./img/carrosel 2/rgd2024 (5).jpeg" alt="Retro Gamer Day" class="evento-info-img">
-    </div>
-</div>
+        <section class="gif-container">
+            <img src="./img/left-gif.gif" alt="Left GIF" class="left-gif">
+            <img src="./img/center-gif.gif" alt="Center GIF" class="center-gif">
+            <img src="./img/ryu-ken.gif" alt="Ryu Ken" class="center-gif">
+            <img src="./img/sonic.gif" alt="Sonic" class="center-gif">
+            <img src="./img/right-gif.gif" alt="Right GIF" class="right-gif">
+        </section>
 
-<br><br><br><br>
-        <div class="contador">
-    <a title='Contador de Visitas do MegaContador' href='https://megacontador.com.br/'>
-        <img src='https://megacontador.com.br/img-89txXwEuBNj7amuz-40.gif' border='0' alt='Contador de visitas'>
-        <p>RETROGAMER VISITANTE Nº</p>
-    </a>
-    </div>
-<!-- Fim do código contador -->
-       
-    </div>
+        <section id="chat-container">
+            <h2>Chat em Tempo Real</h2>
+            <div id="chat-messages"></div>
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
 
-    <div class="gif-container">
-        <img src="./img/left-gif.gif" alt="Left GIF" class="left-gif">
-        <img src="./img/center-gif.gif" alt="Center GIF" class="center-gif">
-        <img src="./img/ryu-ken.gif" alt="Center GIF" class="center-gif">
-        <img src="./img/sonic.gif" alt="Center GIF" class="center-gif">
-        <img src="./img/right-gif.gif" alt="Right GIF" class="right-gif">
-    </div>
-
-    <div id="chat-container">
-        <h2>Chat em Tempo Real</h2>
-        <div id="chat-messages"></div>
-        <form id="chat-form">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-
-    <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCzhLhln9AHwtnbyImmzlA8rzYEqZKwsDM",
-            authDomain: "galz-games-chat.firebaseapp.com",
-            databaseURL: "https://galz-games-chat-default-rtdb.firebaseio.com/",
-            projectId: "galz-games-chat",
-            storageBucket: "galz-games-chat.appspot.com",
-            messagingSenderId: "1052839458559",
-            appId: "1:1052839458559:web:4979aff89169f16e727eca"
-        };
-
-        // Inicializa o Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Referência ao Realtime Database
-        const db = firebase.database().ref("messages");
-
-        // Exibe mensagens em tempo real
-        db.on("child_added", (snapshot) => {
-            const message = snapshot.val();
-            if (!message) {
-                console.error("Nenhuma mensagem encontrada.");
-                return;
-            }
-
-            console.log("Mensagem recebida:", message);
-
-            const messageDiv = document.createElement("div");
-            messageDiv.textContent = `${message.user}: ${message.text}`;
-            document.getElementById("chat-messages").appendChild(messageDiv);
-
-            // Rola para a última mensagem
-            const chatMessages = document.getElementById("chat-messages");
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
-
-        // Envia mensagens
-        document.getElementById("chat-form").addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const chatInput = document.getElementById("chat-input");
-            const message = chatInput.value;
-
-            if (message.trim() === "") {
-                console.error("Mensagem vazia não pode ser enviada.");
-                return;
-            }
-
-            // Envia a mensagem com o nome do usuário
-            db.push({
-                user: localStorage.getItem('userName') || "Anônimo", // Nome do usuário armazenado no localStorage
-                text: message,
-            }).then(() => {
-                console.log("Mensagem enviada:", message);
-            }).catch((error) => {
-                console.error("Erro ao enviar mensagem:", error);
-            });
-
-            chatInput.value = ""; // Limpa o campo de entrada
-        });
-    </script>
-    
     <footer class="footer">
         <div class="social-icons">
             <a href="https://www.youtube.com/@galzgames8113" target="_blank" rel="noopener noreferrer">
@@ -237,7 +139,6 @@
                 <p>facebook</p>
             </a>
         </div>
-
         <div class="sponsors">
             <h2>Patrocinadores</h2>
             <div class="sponsor-logos">
@@ -252,7 +153,6 @@
                 <img src="./img/patrocinadores/sponsor1.png" alt="Patrocinador 9" class="sponsor-logo">
                 <img src="./img/patrocinadores/sponsor1.png" alt="Patrocinador 10" class="sponsor-logo">
             </div>
-            
         </div>
         <div class="supporters">
             <h2>Apoios</h2>
@@ -269,15 +169,13 @@
                 <img src="./img/patrocinadores/sponsor1.png" alt="Apoio 10" class="supporter-logo">
             </div>
         </div>
-
-        <p>&copy; 2025 Galz Games. Todos os direitos reservados.<p>
-            <p>Desenvolvido pela Equipe Galz Games</p>
+        <p>&copy; 2025 Galz Games. Todos os direitos reservados.</p>
+        <p>Desenvolvido pela Equipe Galz Games</p>
     </footer>
-
-    <!-- Música com loop infinito -->
     <audio autoplay loop controls>
         <source src="./music/background.mp3" type="audio/mp3">
-        Seu navigator não suporta o elemento de áudio.
+        Seu navegador não suporta o elemento de áudio.
     </audio>
+    <script src="chat.js"></script>
 </body>
 </html>
