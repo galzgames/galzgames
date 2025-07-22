@@ -9,22 +9,44 @@
     <link rel="icon" href="./img/album.png" type="image/x-icon">
 </head>
 <body>
+    
+    <style>
+   
+    </style>
+
+    <!-- Firebase App (necessário para inicializar o Firebase) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
+    <!-- Firebase Database (necessário para usar o Realtime Database) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <!-- Verifica se o usuário está autenticado -->
     <script>
-        // Autenticação simples
         const isAuthenticated = localStorage.getItem('isAuthenticated');
-        if (!isAuthenticated) window.location.href = "login.html";
+
+        // Se o usuário não estiver autenticado, redireciona para login.html
+        if (!isAuthenticated) {
+            window.location.href = "login.html";
+        }
+
+        // Solicita o nome do usuário ao carregar a página, se ainda não estiver definido
         let userName = localStorage.getItem('userName');
         if (!userName) {
             userName = prompt("Digite seu nome para participar do chat:");
-            if (userName) localStorage.setItem('userName', userName);
-            else { alert("Você precisa inserir um nome para participar do chat."); window.location.reload(); }
+            if (userName) {
+                localStorage.setItem('userName', userName);
+            } else {
+                alert("Você precisa inserir um nome para participar do chat.");
+                window.location.reload();
+            }
         }
+
         function logout() {
             localStorage.removeItem('isAuthenticated');
             window.location.href = "login.html";
         }
     </script>
-    <button onclick="logout()" class="logout-btn">Logout</button>
 
     <nav class="nav-buttons">
         <button class="arcade-btn" onclick="window.location.href='inicio.html'">INICIO</button>
@@ -110,6 +132,70 @@
                 <button type="submit">Enviar</button>
             </form>
         </section>
+ 
+    <script>
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCzhLhln9AHwtnbyImmzlA8rzYEqZKwsDM",
+            authDomain: "galz-games-chat.firebaseapp.com",
+            databaseURL: "https://galz-games-chat-default-rtdb.firebaseio.com/",
+            projectId: "galz-games-chat",
+            storageBucket: "galz-games-chat.appspot.com",
+            messagingSenderId: "1052839458559",
+            appId: "1:1052839458559:web:4979aff89169f16e727eca"
+        };
+
+        // Inicializa o Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Referência ao Realtime Database
+        const db = firebase.database().ref("messages");
+
+        // Exibe mensagens em tempo real
+        db.on("child_added", (snapshot) => {
+            const message = snapshot.val();
+            if (!message) {
+                console.error("Nenhuma mensagem encontrada.");
+                return;
+            }
+
+            console.log("Mensagem recebida:", message);
+
+            const messageDiv = document.createElement("div");
+            messageDiv.textContent = `${message.user}: ${message.text}`;
+            document.getElementById("chat-messages").appendChild(messageDiv);
+
+            // Rola para a última mensagem
+            const chatMessages = document.getElementById("chat-messages");
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        // Envia mensagens
+        document.getElementById("chat-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const chatInput = document.getElementById("chat-input");
+            const message = chatInput.value;
+
+            if (message.trim() === "") {
+                console.error("Mensagem vazia não pode ser enviada.");
+                return;
+            }
+
+            // Envia a mensagem com o nome do usuário
+            db.push({
+                user: localStorage.getItem('userName') || "Anônimo", // Nome do usuário armazenado no localStorage
+                text: message,
+            }).then(() => {
+                console.log("Mensagem enviada:", message);
+            }).catch((error) => {
+                console.error("Erro ao enviar mensagem:", error);
+            });
+
+            chatInput.value = ""; // Limpa o campo de entrada
+        });
+    </script>
+
     </main>
 
     <footer class="footer">
@@ -177,5 +263,33 @@
         Seu navegador não suporta o elemento de áudio.
     </audio>
     <script src="chat.js"></script>
+    <script>
+        // Recupera mensagens do localStorage
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+            messages.forEach(msg => {
+                const div = document.createElement('div');
+                div.textContent = msg;
+                chatMessages.appendChild(div);
+            });
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message) {
+                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+                messages.push(message);
+                localStorage.setItem('chatMessages', JSON.stringify(messages));
+                input.value = '';
+                loadMessages();
+            }
+        }
+
+        // Carrega mensagens ao abrir a página
+        window.onload = loadMessages;
+    </script>
 </body>
 </html>
