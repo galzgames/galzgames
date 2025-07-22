@@ -677,8 +677,8 @@ img {
 }
 
 .evento-poster-img {
-    width: 90vw;
-    max-width: 1200px;
+    width: 90vw;         /* ocupa 90% da largura da tela */
+    max-width: 1200px;   /* limite máximo para não distorcer em telas grandes */
     height: auto;
     border-radius: 43px;
     box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
@@ -720,7 +720,7 @@ img {
     max-width: 120px;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: 43px;
+    border-radius: 14px;
     box-shadow: 0 4px 16px #ff004f88, 0 2px 8px #fff70055;
     background: #fff;
     display: block;
