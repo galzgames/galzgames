@@ -1,75 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta name="google-adsense-account" content="ca-pub-3522469415877655">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa</title>
+    <title>Inscrições Torneios</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="./img/album.png" type="image/x-icon">
-    
-    
     <style>
         body {
-            background-image: url('./img/back2.avif'); /* Caminho para a sua imagem de fundo */
-            background-size: cover; /* Faz a imagem cobrir todo o fundo */
-            background-position: center; /* Centraliza a imagem de fundo */
-            background-repeat: no-repeat; /* Evita que a imagem se repita */
-            color: rgb(41, 39, 134); /* Cor do texto */
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url('./img/back2.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #292786;
+            font-family: 'Press Start 2P', Arial, sans-serif;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        .inscricoes-section {
+            width: 98vw;
+            max-width: 1200px;
+            margin: 48px auto 32px auto;
+            padding: 40px 24px;
+            background: rgba(255,255,255,0.96);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .inscricoes-title {
+            color: #1c649f;
+            font-size: 2em;
+            margin-bottom: 32px;
             text-align: center;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 8px #fff70033;
+        }
+        .form-grid {
+            display: flex;
+            gap: 40px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         .form-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(248, 249, 250, 0.8); /* Fundo semi-transparente */
-            border-radius: 10px;
+            flex: 1 1 480px;
+            max-width: 600px;
+            min-width: 320px;
+            background: #f7f7fa;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #007bff22;
+            padding: 28px 18px 18px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container h2 {
+            color: #ff004f;
+            font-size: 1.2em;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
         }
         iframe {
             width: 100%;
-            height: 600px;
+            min-height: 600px;
             border: none;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px #007bff22;
         }
         .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            margin: 32px auto 0 auto;
+            padding: 12px 32px;
+            font-size: 1.1em;
             color: white;
-            background-color: rgb(41, 39, 134);
+            background-color: #292786;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+            display: block;
         }
         .back-button:hover {
-            background-color: rgb(31, 29, 124);
+            background-color: #1f1d7c;
+        }
+        @media (max-width: 900px) {
+            .inscricoes-section {
+                padding: 16px 2vw;
+                margin: 18px 0 18px 0;
+            }
+            .form-grid {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .form-container {
+                min-width: 0;
+                width: 98vw;
+                padding: 12px 2vw 10px 2vw;
+            }
+            iframe {
+                min-height: 400px;
+            }
+            .inscricoes-title {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Torneio Brawl Star</h2>
-        <iframe src="https://forms.gle/LjC6kDRFSjZoNbTD7"></iframe>
-    </div>
-    <div class="form-container">
-        <h2>Torneio LoL Wr</h2>
-        <iframe src="https://forms.gle/ZRe9jzZtmKj3Cnsp8"></iframe>
-    </div>
-    <button class="back-button" onclick="window.history.back();">Voltar</button>
-</footer>
-
-<!-- Música com loop infinito -->
-<audio autoplay loop controls>
-    <source src="./music/hoje nao tera gamer over.mp3" type="audio/mp3">
-    Seu navigator não suporta o elemento de áudio.
-
+    <section class="inscricoes-section">
+        <div class="inscricoes-title">Inscreva-se nos Torneios</div>
+        <div class="form-grid">
+            <div class="form-container">
+                <h2>Torneio Brawl Stars</h2>
+                <iframe src="https://forms.gle/LjC6kDRFSjZoNbTD7" title="Inscrição Brawl Stars"></iframe>
+            </div>
+            <div class="form-container">
+                <h2>Torneio LoL WR</h2>
+                <iframe src="https://forms.gle/ZRe9jzZtmKj3Cnsp8" title="Inscrição LoL WR"></iframe>
+            </div>
+        </div>
+        <button class="back-button" onclick="window.history.back();">Voltar</button>
+    </section>
+    <audio autoplay loop controls>
+        <source src="./music/hoje nao tera gamer over.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 </body>
 </html>
