@@ -1,23 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta name="google-adsense-account" content="ca-pub-3522469415877655">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Músicas</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="./img/album.png" type="image/x-icon">
-    
-    
     <style>
-        .music-section ul {
-            list-style-type: none;
+        body {
+            background-image: url('./img/back2.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #222;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            margin: 0;
             padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .music-section li {
-            margin-bottom: 20px;
+        .back-button {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            padding: 10px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .music-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+            padding: 32px 24px;
+            margin: 48px auto 32px auto;
+            max-width: 700px;
+            width: 96vw;
+        }
+        .music-section h2 {
+            text-align: center;
+            color: #1c649f;
+            margin-bottom: 32px;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+        }
+        .music-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .music-item {
+            background: #f7f7fa;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px #007bff22;
+            padding: 18px 18px 12px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 260px;
+            min-width: 180px;
+            max-width: 100%;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .music-item:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 24px #ff004f44, 0 2px 8px #ffb30033;
+        }
+        .music-item audio {
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 2px solid #007bff33;
+            background: #fff;
+        }
+        .music-title {
+            color: #ff004f;
+            font-size: 1em;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px #fff70055;
+        }
+        @media (max-width: 700px) {
+            .music-section {
+                padding: 14px 2vw;
+                margin: 24px 0 18px 0;
+            }
+            .music-list {
+                gap: 12px;
+            }
+            .music-item {
+                width: 98vw;
+                min-width: 0;
+                padding: 10px 4vw 8px 4vw;
+            }
         }
     </style>
 </head>
@@ -25,77 +117,72 @@
     <button onclick="window.history.back();" class="back-button">Voltar</button>
     <div class="music-section">
         <h2>Escolha uma Música</h2>
-        <ul>
-            <li>
+        <ul class="music-list">
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (1).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-01</p>
+                <div class="music-title">RG-DAY-01</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (2).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-02</p>
+                <div class="music-title">RG-DAY-02</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (3).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-03</p>
+                <div class="music-title">RG-DAY-03</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (4).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-04</p>
+                <div class="music-title">RG-DAY-04</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (5).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-05</p>
+                <div class="music-title">RG-DAY-05</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (6).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-06</p>
+                <div class="music-title">RG-DAY-06</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (7).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-07</p>
+                <div class="music-title">RG-DAY-07</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/retro gamer (8).mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>RG-DAY-08</p>
+                <div class="music-title">RG-DAY-08</div>
             </li>
-            <li>
+            <li class="music-item">
                 <audio controls>
                     <source src="./music/play time.mp3" type="audio/mp3">
                     Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <p>ABERTURA PLAY TIME</p>
+                <div class="music-title">ABERTURA PLAY TIME</div>
             </li>
             <!-- Adicione mais músicas conforme necessário -->
         </ul>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>
