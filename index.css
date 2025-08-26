@@ -908,35 +908,104 @@ img {
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
-    .evento-info-flex {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        width: 100%;
-        max-width: 100vw;
-        padding: 0 2vw;
+/* Adicione ou ajuste no seu index.css */
+.evento-youtube-box {
+    max-width: 600px;
+    margin: 40px auto 48px auto;
+    background: linear-gradient(120deg, #e3eaff 70%, #b3d1ff 100%);
+    /* tom de azul suave */
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #1c649f;
+    border-image: linear-gradient(90deg, #ff004f 0%, #1c649f 100%);
+    border-image-slice: 1;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+/* Melhore a área interna do evento-youtube-box para visual mais profissional */
+.evento-youtube-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(120deg, #f7f7fa 80%, #e3eaff 100%);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px #1c649f22, 0 1px 4px #ff004f22;
+    padding: 28px 18px 18px 18px;
+    margin: 0 auto;
+    border: 2px solid #ff004f44;
+    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.evento-youtube-link:hover {
+    background: linear-gradient(120deg, #fff 60%, #ffb30022 100%);
+    box-shadow: 0 8px 32px #ff004f33, 0 2px 8px #1c649f33;
+    border-color: #1c649f;
+}
+
+.evento-youtube-thumb {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.evento-youtube-thumb img {
+    width: 70px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0003;
+    background: #fff;
+    border: 2px solid #1c649f33;
+}
+
+.evento-youtube-thumb span {
+    font-size: 1.22em;
+    color: #ff004f;
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 8px #fff70033;
+    background: #fff;
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #ff004f33;
+    box-shadow: 0 1px 4px #ff004f22;
+}
+
+.evento-youtube-video {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.evento-youtube-video iframe {
+    width: 100%;
+    max-width: 480px;
+    height: 270px;
+    border-radius: 14px;
+    border: 2px solid #1c649f33;
+    box-shadow: 0 2px 8px #007bff22;
+    background: #000;
+}
+
+@media (max-width: 700px) {
+    .evento-youtube-link {
+        padding: 10px 2vw 10px 2vw;
     }
-    .evento-info-col {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        margin-bottom: 8px;
-    }
-    .evento-info-img {
-        max-width: 80px;
-        aspect-ratio: 1/1;
-    }
-    .evento-info-text {
+    .evento-youtube-video iframe {
         max-width: 98vw;
-        min-width: 0;
-        padding: 12px 4vw;
-        font-size: 0.97em;
-        margin: 0 auto 10px auto;
-        text-align: center;
+        height: 38vw;
+        min-height: 180px;
+    }
+    .evento-youtube-thumb span {
+        font-size: 0.95em;
+        padding: 6px 10px;
     }
 }
