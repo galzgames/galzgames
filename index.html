@@ -42,6 +42,22 @@
             }
         }
 
+        // Envia mensagem de boas-vindas automática ao entrar no chat
+        const alreadyWelcomed = sessionStorage.getItem('alreadyWelcomed');
+        if (!alreadyWelcomed && userName) {
+            // Aguarda o Firebase estar pronto
+            window.addEventListener('DOMContentLoaded', function () {
+                if (typeof firebase !== "undefined" && firebase.apps.length) {
+                    const db = firebase.database().ref("messages");
+                    db.push({
+                        user: "Galz Games",
+                        text: `Seja bem-vindo(a), ${userName}! A equipe Galz Games e RetroGamerDay agradece a sua visita.`,
+                    });
+                    sessionStorage.setItem('alreadyWelcomed', 'true');
+                }
+            });
+        }
+
         function logout() {
             localStorage.removeItem('isAuthenticated');
             window.location.href = "login.html";
@@ -146,7 +162,7 @@
                 <button type="submit">Enviar</button>
             </form>
         </section>
- 
+
     <script>
         // Configuração do Firebase
         const firebaseConfig = {
@@ -159,21 +175,18 @@
             appId: "1:1052839458559:web:4979aff89169f16e727eca"
         };
 
-        // Inicializa o Firebase
-        firebase.initializeApp(firebaseConfig);
+        // Inicializa o Firebase apenas uma vez
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
 
         // Referência ao Realtime Database
         const db = firebase.database().ref("messages");
 
-        // Exibe mensagens em tempo real
+        // Exibe mensagens em tempo real (inclusive as antigas)
         db.on("child_added", (snapshot) => {
             const message = snapshot.val();
-            if (!message) {
-                console.error("Nenhuma mensagem encontrada.");
-                return;
-            }
-
-            console.log("Mensagem recebida:", message);
+            if (!message) return;
 
             const messageDiv = document.createElement("div");
             messageDiv.textContent = `${message.user}: ${message.text}`;
@@ -191,22 +204,14 @@
             const chatInput = document.getElementById("chat-input");
             const message = chatInput.value;
 
-            if (message.trim() === "") {
-                console.error("Mensagem vazia não pode ser enviada.");
-                return;
-            }
+            if (message.trim() === "") return;
 
-            // Envia a mensagem com o nome do usuário
             db.push({
-                user: localStorage.getItem('userName') || "Anônimo", // Nome do usuário armazenado no localStorage
+                user: localStorage.getItem('userName') || "Anônimo",
                 text: message,
-            }).then(() => {
-                console.log("Mensagem enviada:", message);
-            }).catch((error) => {
-                console.error("Erro ao enviar mensagem:", error);
             });
 
-            chatInput.value = ""; // Limpa o campo de entrada
+            chatInput.value = "";
         });
     </script>
 
@@ -276,34 +281,5 @@
         <source src="./music/background.mp3" type="audio/mp3">
         Seu navegador não suporta o elemento de áudio.
     </audio>
-    <script src="chat.js"></script>
-    <script>
-        // Recupera mensagens do localStorage
-        function loadMessages() {
-            const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-            const chatMessages = document.getElementById('chat-messages');
-            chatMessages.innerHTML = '';
-            messages.forEach(msg => {
-                const div = document.createElement('div');
-                div.textContent = msg;
-                chatMessages.appendChild(div);
-            });
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
-            if (message) {
-                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-                messages.push(message);
-                localStorage.setItem('chatMessages', JSON.stringify(messages));
-                input.value = '';
-                loadMessages();
-            }
-        }
-
-        // Carrega mensagens ao abrir a página
-        window.onload = loadMessages;
-    </script>
 </body>
 </html>
