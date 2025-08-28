@@ -864,48 +864,74 @@ img {
 
 .social-icons {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.logo {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-}
-
-.sponsors, .supporters {
-    background-color: rgba(255,255,255,0.9);
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 1200px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.sponsor-logos, .supporter-logos {
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 32px auto 24px auto;
+    padding: 12px 0;
 }
 
-.sponsor-logo, .supporter-logo {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+.social-icons a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #292786;
+    flex: 1 1 120px;
+    min-width: 120px;
+    max-width: 180px;
+    transition: transform 0.2s;
 }
 
-.sponsor-logo:hover, .supporter-logo:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+.social-icons a:hover {
+    transform: scale(1.08);
+    color: #ff004f;
+}
+
+.social-icons .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #007bff33;
+    margin-bottom: 8px;
+    background: #fff;
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.social-icons a:hover .logo {
+    box-shadow: 0 6px 24px #ff004f44, 0 2px 8px #ffb30033;
+    background: #f7f7fa;
+}
+
+.social-icons p {
+    margin: 0;
+    font-size: 1.1em;
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    letter-spacing: 1px;
+    color: #1c649f;
+    text-shadow: 1px 1px 8px #fff70033;
+}
+
+@media (max-width: 900px) {
+    .social-icons {
+        gap: 12px;
+        max-width: 98vw;
+        flex-wrap: wrap;
+    }
+    .social-icons .logo {
+        width: 48px;
+        height: 48px;
+    }
+    .social-icons a {
+        min-width: 80px;
+        max-width: 120px;
+    }
+    .social-icons p {
+        font-size: 0.85em;
+    }
 }
 
 /* Adicione ou ajuste no seu index.css */
