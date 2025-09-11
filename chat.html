@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Galz Games</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/album.png" type="image/x-icon">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            background-image: url(./img/back.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: white;
+        }
+        #chat-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 32px 24px;
+            border-radius: 18px;
+            margin: 48px auto;
+            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+        }
+        #chat-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #ff004f;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+        }
+        #chat-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 18px;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+        }
+        #chat-form {
+            display: flex;
+            gap: 10px;
+        }
+        #chat-input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        #chat-form button {
+            padding: 12px 24px;
+            background-color: #ff004f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        #chat-form button:hover {
+            background-color: #1c649f;
+        }
+        .name-prompt {
+            max-width: 400px;
+            margin: 48px auto 0 auto;
+            background: rgba(0,0,0,0.85);
+            padding: 32px 24px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+            text-align: center;
+        }
+        .name-prompt label {
+            font-size: 1.1em;
+            color: #fff;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .name-prompt input {
+            width: 80%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 18px;
+        }
+        .name-prompt button {
+            padding: 12px 24px;
+            background-color: #ff004f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .name-prompt button:hover {
+            background-color: #1c649f;
+        }
+        .back-button {
+            display: block;
+            margin: 32px auto 0 auto;
+            padding: 12px 32px;
+            font-size: 1.1em;
+            color: white;
+            background-color: #1c649f;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+        .back-button:hover {
+            background-color: #ff004f;
+        }
+    </style>
+</head>
+<body>
+    <div class="name-prompt" id="namePrompt">
+        <label for="userNameInput">Digite seu nome para participar do chat:</label>
+        <input type="text" id="userNameInput" placeholder="Seu nome" required>
+        <button onclick="setUserName()">Entrar no Chat</button>
+    </div>
+
+    <section id="chat-container" style="display:none;">
+        <h2>Chat Galz Games</h2>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <button class="back-button" onclick="window.location.href='index.html'">Voltar à Página Inicial</button>
+
+    <script>
+        // Firebase Configuração
+        const firebaseConfig = {
+            apiKey: "AIzaSyCzhLhln9AHwtnbyImmzlA8rzYEqZKwsDM",
+            authDomain: "galz-games-chat.firebaseapp.com",
+            databaseURL: "https://galz-games-chat-default-rtdb.firebaseio.com/",
+            projectId: "galz-games-chat",
+            storageBucket: "galz-games-chat.appspot.com",
+            messagingSenderId: "1052839458559",
+            appId: "1:1052839458559:web:4979aff89169f16e727eca"
+        };
+
+        // Inicializa o Firebase apenas uma vez
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        // Referência ao Realtime Database
+        const db = firebase.database().ref("messages");
+
+        // Função para definir o nome do usuário
+        function setUserName() {
+            const input = document.getElementById('userNameInput');
+            const name = input.value.trim();
+            if (name === "") {
+                input.focus();
+                return;
+            }
+            localStorage.setItem('userName', name);
+            document.getElementById('namePrompt').style.display = 'none';
+            document.getElementById('chat-container').style.display = 'block';
+
+            // Mensagem de boas-vindas
+            const alreadyWelcomed = sessionStorage.getItem('alreadyWelcomed');
+            if (!alreadyWelcomed) {
+                db.push({
+                    user: "Galz Games",
+                    text: `Seja bem-vindo(a), ${name}! A equipe Galz Games e RetroGamerDay agradece a sua visita.`,
+                });
+                sessionStorage.setItem('alreadyWelcomed', 'true');
+            }
+        }
+
+        // Se já tem nome salvo, pula direto para o chat
+        window.onload = function() {
+            const name = localStorage.getItem('userName');
+            if (name) {
+                document.getElementById('namePrompt').style.display = 'none';
+                document.getElementById('chat-container').style.display = 'block';
+            }
+        };
+
+        // Exibe mensagens em tempo real (inclusive as antigas)
+        db.on("child_added", (snapshot) => {
+            const message = snapshot.val();
+            if (!message) return;
+
+            const messageDiv = document.createElement("div");
+            messageDiv.textContent = `${message.user}: ${message.text}`;
+            document.getElementById("chat-messages").appendChild(messageDiv);
+
+            // Rola para a última mensagem
+            const chatMessages = document.getElementById("chat-messages");
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        // Envia mensagens
+        document.getElementById("chat-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const chatInput = document.getElementById("chat-input");
+            const message = chatInput.value;
+
+            if (message.trim() === "") return;
+
+            db.push({
+                user: localStorage.getItem('userName') || "Anônimo",
+                text: message,
+            });
+
+            chatInput.value = "";
+        });
+    </script>
+</body>
+</html>
