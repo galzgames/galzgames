@@ -9,60 +9,7 @@
     <link rel="icon" href="./img/album.png" type="image/x-icon">
 </head>
 <body>
-    
-    <style>
-   
-    </style>
-
-    <!-- Firebase App (necessário para inicializar o Firebase) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-
-    <!-- Firebase Database (necessário para usar o Realtime Database) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-</head>
-<body>
-    <!-- Verifica se o usuário está autenticado -->
-    <script>
-        const isAuthenticated = localStorage.getItem('isAuthenticated');
-
-        // Se o usuário não estiver autenticado, redireciona para login.html
-        if (!isAuthenticated) {
-            window.location.href = "login.html";
-        }
-
-        // Solicita o nome do usuário ao carregar a página, se ainda não estiver definido
-        let userName = localStorage.getItem('userName');
-        if (!userName) {
-            userName = prompt("Digite seu nome para participar do chat:");
-            if (userName) {
-                localStorage.setItem('userName', userName);
-            } else {
-                alert("Você precisa inserir um nome para participar do chat.");
-                window.location.reload();
-            }
-        }
-
-        // Envia mensagem de boas-vindas automática ao entrar no chat
-        const alreadyWelcomed = sessionStorage.getItem('alreadyWelcomed');
-        if (!alreadyWelcomed && userName) {
-            // Aguarda o Firebase estar pronto
-            window.addEventListener('DOMContentLoaded', function () {
-                if (typeof firebase !== "undefined" && firebase.apps.length) {
-                    const db = firebase.database().ref("messages");
-                    db.push({
-                        user: "Galz Games",
-                        text: `Seja bem-vindo(a), ${userName}! A equipe Galz Games e RetroGamerDay agradece a sua visita.`,
-                    });
-                    sessionStorage.setItem('alreadyWelcomed', 'true');
-                }
-            });
-        }
-
-        function logout() {
-            localStorage.removeItem('isAuthenticated');
-            window.location.href = "login.html";
-        }
-    </script>
+    <!-- Removido script de autenticação/login -->
 
     <nav class="nav-buttons">
         <button class="arcade-btn" onclick="window.location.href='inicio.html'">INICIO</button>
@@ -73,20 +20,16 @@
         <button class="arcade-btn" onclick="window.location.href='inscrissoes.html'">INSCRIÇÕES</button>
         <button class="arcade-btn" onclick="window.location.href='iflame.html'">JOGOS RETRO ON LINE</button>
         <button class="arcade-btn" onclick="window.location.href='chat.html'">CHAT GALZ GAMES</button>
-
     </nav>
 
     <div class="evento-youtube-box">
         <a> ENTREVISTA NO PODCAST THE NERD thenerdtheory</a>
         <br><br><br><br>
-        
-            <div class="evento-youtube-video">
+        <div class="evento-youtube-video">
             <iframe width="420" height="236" src="https://www.youtube.com/embed/U30lijFfr2s" title="Entrevista no canal - thenerdtheory" frameborder="0" allowfullscreen></iframe>
         </div>
-    </a>
-    <br><br><br><br>
-
-</div>
+        <br><br><br><br>
+    </div>
 
     <header class="evento-poster">
         <img src="./img/POSTE EVENTO.jpg" alt="Poster RetroGamerDay" class="evento-poster-img">
@@ -96,8 +39,6 @@
             <img src="./img/retro gamer day.jpeg" alt="Album">
         </div>
     </header>
-
-   
 
     <main>
         <section class="evento-info-flex">
@@ -155,7 +96,6 @@
             <img src="./img/sonic.gif" alt="Sonic" class="center-gif">
             <img src="./img/right-gif.gif" alt="Right GIF" class="right-gif">
         </section>
-
     </main>
 
     <br><br><br><br>
@@ -268,6 +208,7 @@
     </audio>
 </body>
 </html>
+
 
 
 
