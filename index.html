@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="icon" href="./img/album.png" type="image/x-icon">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
 </head>
 <body>
     
@@ -74,6 +72,8 @@
         <button class="arcade-btn" onclick="window.location.href='pesquisa.html'">PESQUISA</button>
         <button class="arcade-btn" onclick="window.location.href='inscrissoes.html'">INSCRIÇÕES</button>
         <button class="arcade-btn" onclick="window.location.href='iflame.html'">JOGOS RETRO ON LINE</button>
+        <button class="arcade-btn" onclick="window.location.href='chat.html'">CHAT GALZ GAMES</button>
+
     </nav>
 
     <div class="evento-youtube-box">
@@ -155,67 +155,6 @@
             <img src="./img/sonic.gif" alt="Sonic" class="center-gif">
             <img src="./img/right-gif.gif" alt="Right GIF" class="right-gif">
         </section>
-
-        <section id="chat-container">
-            <h2>Chat em Tempo Real</h2>
-            <div id="chat-messages"></div>
-            <form id="chat-form">
-                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-
-    <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCzhLhln9AHwtnbyImmzlA8rzYEqZKwsDM",
-            authDomain: "galz-games-chat.firebaseapp.com",
-            databaseURL: "https://galz-games-chat-default-rtdb.firebaseio.com/",
-            projectId: "galz-games-chat",
-            storageBucket: "galz-games-chat.appspot.com",
-            messagingSenderId: "1052839458559",
-            appId: "1:1052839458559:web:4979aff89169f16e727eca"
-        };
-
-        // Inicializa o Firebase apenas uma vez
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-
-        // Referência ao Realtime Database
-        const db = firebase.database().ref("messages");
-
-        // Exibe mensagens em tempo real (inclusive as antigas)
-        db.on("child_added", (snapshot) => {
-            const message = snapshot.val();
-            if (!message) return;
-
-            const messageDiv = document.createElement("div");
-            messageDiv.textContent = `${message.user}: ${message.text}`;
-            document.getElementById("chat-messages").appendChild(messageDiv);
-
-            // Rola para a última mensagem
-            const chatMessages = document.getElementById("chat-messages");
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
-
-        // Envia mensagens
-        document.getElementById("chat-form").addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const chatInput = document.getElementById("chat-input");
-            const message = chatInput.value;
-
-            if (message.trim() === "") return;
-
-            db.push({
-                user: localStorage.getItem('userName') || "Anônimo",
-                text: message,
-            });
-
-            chatInput.value = "";
-        });
-    </script>
 
     </main>
 
@@ -329,6 +268,7 @@
     </audio>
 </body>
 </html>
+
 
 
 
