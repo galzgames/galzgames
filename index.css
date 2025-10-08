@@ -859,33 +859,42 @@ img {
 
 /* Patrocinadores e Apoios */
 .sponsors, .supporters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 98vw;
-    margin: 0 auto 18px auto;
+    margin: 32px auto 32px auto;   /* Mais espaçamento acima e abaixo */
+    padding: 24px 0 18px 0;        /* Espaço interno superior e inferior */
     text-align: center;
+    box-sizing: border-box;
 }
 
 .sponsor-logos, .supporter-logos {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 24px;                     /* Espaço maior entre os logos */
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 18px auto 0 auto;      /* Espaço acima dos logos */
+    width: 100%;
+    max-width: 900px;
+    padding: 0;
 }
 
 .sponsor-logo, .supporter-logo {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #007bff22;
-    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100px; /* Define um tamanho fixo para todas as imagens */
+    height: 100px; /* Define a altura fixa */
+    object-fit: cover; /* Garante que a imagem se ajuste ao tamanho sem distorção */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza o movimento e a sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
 }
 
 .sponsor-logo:hover, .supporter-logo:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 24px #ff004f44, 0 2px 8px #ffb30033;
+    transform: scale(1.1) translateY(-5px); /* Aumenta o tamanho e move a imagem para cima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Aumenta a sombra ao passar o mouse */
 }
 
 @media (max-width: 700px) {
@@ -1102,17 +1111,19 @@ main {
 
 /* Carrossel mobile */
 .carrossel-mobile-row {
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;    /* Agora as imagens ficam em coluna (vertical) */
+    align-items: center;       /* Centraliza as imagens na vertical */
+    gap: 18px;                 /* Espaço entre as imagens */
+    margin: 18px 0;
 }
 
 .boardgames-mobile-row {
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;   /* Imagens em coluna (vertical) */
+    align-items: center;      /* Centraliza as imagens */
+    gap: 18px;                /* Espaço entre as imagens */
+    margin: 18px 0;
 }
 
 @media (max-width: 900px) {
@@ -1233,33 +1244,42 @@ main {
 
 /* Patrocinadores e Apoios */
 .sponsors, .supporters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 98vw;
-    margin: 0 auto 18px auto;
+    margin: 32px auto 32px auto;   /* Mais espaçamento acima e abaixo */
+    padding: 24px 0 18px 0;        /* Espaço interno superior e inferior */
     text-align: center;
+    box-sizing: border-box;
 }
 
 .sponsor-logos, .supporter-logos {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 24px;                     /* Espaço maior entre os logos */
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 18px auto 0 auto;      /* Espaço acima dos logos */
+    width: 100%;
+    max-width: 900px;
+    padding: 0;
 }
 
 .sponsor-logo, .supporter-logo {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #007bff22;
-    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100px; /* Define um tamanho fixo para todas as imagens */
+    height: 100px; /* Define a altura fixa */
+    object-fit: cover; /* Garante que a imagem se ajuste ao tamanho sem distorção */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza o movimento e a sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
 }
 
 .sponsor-logo:hover, .supporter-logo:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 24px #ff004f44, 0 2px 8px #ffb30033;
+    transform: scale(1.1) translateY(-5px); /* Aumenta o tamanho e move a imagem para cima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Aumenta a sombra ao passar o mouse */
 }
 
 @media (max-width: 700px) {
