@@ -1,314 +1,300 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Galeria - Retro Gamer Day</title>
     <link rel="icon" href="./img/album.png" type="image/x-icon">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
     <style>
-        body {
-            background-image: url('./img/back2.avif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #fff;
-            font-family: 'Press Start 2P', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        :root{
+            --bg: #0f1724;
+            --card-bg: #ffffff;
+            --accent: #1c649f;
+            --muted: #6b7280;
+            --frame-radius: 12px;
+            --frame-border: 6px;
         }
-        .back-button {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            padding: 10px 24px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1em;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: background 0.2s;
+
+        html,body{height:100%;margin:0;font-family:'Press Start 2P', Arial, sans-serif;background:var(--bg);color:#fff;}
+        .page {
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            padding:28px 18px 64px;
+            box-sizing:border-box;
+            gap:18px;
         }
-        .back-button:hover {
-            background-color: #0056b3;
+
+        .topbar{
+            width:100%;
+            max-width:1200px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
         }
-        h1 {
-            color: #fff;
-            margin-top: 80px;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 8px #000;
-            letter-spacing: 2px;
+        .back-button{
+            background:var(--accent);
+            color:#fff;
+            border:none;
+            padding:10px 18px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:700;
+            text-decoration:none;
         }
-        .gallery-section {
-            padding: 32px 24px;
-            background-color: rgba(255,255,255,0.92);
-            border-radius: 18px;
-            margin: 32px auto;
-            max-width: 1400px;
-            width: 98vw;
-            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
+        .title{
+            text-align:center;
+            flex:1;
+            color:var(--card-bg);
+            font-size:1.15rem;
+            letter-spacing:1px;
         }
-        .gallery-section h2 {
-            text-align: center;
-            margin-bottom: 32px;
-            color: #1c649f;
-            font-size: 1.5em;
-            letter-spacing: 1px;
+
+        .sections{
+            width:100%;
+            max-width:1200px;
+            display:flex;
+            flex-direction:column;
+            gap:28px;
         }
-        .carousel-inner {
-            border-radius: 18px;
-            box-shadow: 0 4px 24px #ff004f88, 0 2px 8px #fff70055;
-            background: #fff;
-            max-width: 1100px;
-            margin: 0 auto;
+
+        .gallery-card{
+            background: linear-gradient(180deg,#fff 0%, #f7fbff 100%);
+            border-radius:18px;
+            padding:18px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.25);
+            color: #0b2540;
         }
-        .carousel-item img {
-            width: 100%;
-            max-height: 70vh;
-            object-fit: cover;
-            border-radius: 18px;
-            border: 6px solid #fff;
-            box-shadow: 0 4px 24px #007bff22, 0 2px 8px #ffb30033;
-            background: #fff;
-            margin: 0 auto;
-            transition: transform 0.2s, box-shadow 0.2s;
+
+        .gallery-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
+            margin-bottom:12px;
         }
-        .carousel-item img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 32px #ff004f88, 0 4px 16px #007bff55;
+        .gallery-header h2{ margin:0; font-size:1rem; color:var(--accent); }
+        .gallery-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:14px;
+            align-items:center;
+            justify-items:center;
         }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1) drop-shadow(0 0 6px #000);
-            width: 48px;
-            height: 48px;
+
+        .photo-frame{
+            width:100%;
+            height:260px;
+            max-height:32vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#fff;
+            border-radius:var(--frame-radius);
+            padding:8px;
+            box-sizing:border-box;
+            border: var(--frame-border) solid #ffffff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow:hidden;
+            cursor:zoom-in;
+            transition: transform .18s ease, box-shadow .18s ease;
         }
-        @media (max-width: 900px) {
-            .gallery-section {
-                padding: 10px 2vw;
-                margin: 18px 0;
-            }
-            .carousel-inner {
-                max-width: 98vw;
-            }
-            .carousel-item img {
-                max-height: 45vh;
-            }
-            h1 {
-                font-size: 1.2em;
-                margin-top: 32px;
-            }
+        .photo-frame:hover{ transform: translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.22); }
+
+        .photo-frame img{
+            display:block;
+            width:auto;
+            height:100%;
+            max-width:100%;
+            object-fit:contain; /* mostra a imagem inteira */
+            border-radius:8px;
+        }
+
+        /* Lightbox / fullscreen modal */
+        .lb {
+            position:fixed;
+            inset:0;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            background: rgba(0,0,0,0.92);
+            z-index:99999;
+            padding:20px;
+        }
+        .lb.show{ display:flex; }
+        .lb img{
+            max-width:95%;
+            max-height:95%;
+            object-fit:contain;
+            border-radius:12px;
+            box-shadow:0 20px 60px rgba(0,0,0,0.7);
+        }
+        .lb .close, .lb .nav {
+            position:absolute;
+            background:rgba(255,255,255,0.06);
+            border:none;
+            color:#fff;
+            padding:10px 12px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:700;
+            backdrop-filter: blur(4px);
+        }
+        .lb .close{ top:18px; right:18px; }
+        .lb .nav.prev{ left:18px; top:50%; transform:translateY(-50%); }
+        .lb .nav.next{ right:18px; top:50%; transform:translateY(-50%); }
+
+        .meta { font-size:0.72rem; color:var(--muted); margin-top:8px; text-align:center; }
+
+        @media (max-width:900px){
+            .photo-frame{ height:180px; max-height:36vh; }
+            .gallery-grid{ gap:10px; }
+        }
+        @media (max-width:480px){
+            .photo-frame{ height:140px; }
+            .topbar{ padding:0 6px; }
+            .title{ font-size:0.95rem; }
         }
     </style>
 </head>
 <body>
-    <button onclick="window.history.back();" class="back-button">Voltar</button>
-    <br><br><br><br><br><br>
-    <h1>GALERIA DE FOTOS RETRO GAMER DAY</h1>
-
-    <!-- Primeiro Carrossel -->
-    <div class="gallery-section">
-        <h2>Fotos 2024 Ano 1</h2>
-        <div id="carousel1" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel1" data-slide-to="1"></li>
-                <li data-target="#carousel1" data-slide-to="2"></li>
-                <li data-target="#carousel1" data-slide-to="3"></li>
-                <li data-target="#carousel1" data-slide-to="4"></li>
-                <li data-target="#carousel1" data-slide-to="5"></li>
-                <li data-target="#carousel1" data-slide-to="6"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./img/rgd2024 (1).jpg" alt="Foto 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (2).jpg" alt="Foto 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (3).jpg" alt="Foto 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (4).jpg" alt="Foto 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (5).jpg" alt="Foto 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (6).jpg" alt="Foto 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/rgd2024 (7).jpg" alt="Foto 7">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Próxima</span>
-            </a>
+    <div class="page">
+        <div class="topbar">
+            <a class="back-button" href="index.html">← Voltar</a>
+            <div class="title">GALERIA - Retro Gamer Day</div>
+            <div style="width:86px"></div>
         </div>
+
+        <div class="sections">
+
+            <section class="gallery-card" aria-labelledby="g1-title">
+                <div class="gallery-header">
+                    <h2 id="g1-title">Fotos 2024 - Ano 1</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="photo-frame"><img src="./img/rgd2024 (1).jpg" alt="RGD2024 1"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (2).jpg" alt="RGD2024 2"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (3).jpg" alt="RGD2024 3"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (4).jpg" alt="RGD2024 4"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (5).jpg" alt="RGD2024 5"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (6).jpg" alt="RGD2024 6"></div>
+                    <div class="photo-frame"><img src="./img/rgd2024 (7).jpg" alt="RGD2024 7"></div>
+                </div>
+                <div class="meta">Clique na foto para ampliar</div>
+            </section>
+
+            <section class="gallery-card" aria-labelledby="g2-title">
+                <div class="gallery-header">
+                    <h2 id="g2-title">Fotos 2 - 2024</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (1).jpeg" alt="RGD2024 B1"></div>
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (2).jpeg" alt="RGD2024 B2"></div>
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (3).jpeg" alt="RGD2024 B3"></div>
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (4).jpeg" alt="RGD2024 B4"></div>
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (5).jpeg" alt="RGD2024 B5"></div>
+                    <div class="photo-frame"><img src="./img/carrosel 2/rgd2024 (6).jpeg" alt="RGD2024 B6"></div>
+                </div>
+                <div class="meta">Imagens enquadradas profissionalmente</div>
+            </section>
+
+            <section class="gallery-card" aria-labelledby="g3-title">
+                <div class="gallery-header">
+                    <h2 id="g3-title">Fotos 3 - 2025</h2>
+                </div>
+                <div class="gallery-grid" id="gallery-2025">
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (1).jpeg" alt="RGD2025 1"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (2).jpeg" alt="RGD2025 2"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (3).jpeg" alt="RGD2025 3"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (4).jpeg" alt="RGD2025 4"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (5).jpeg" alt="RGD2025 5"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (6).jpeg" alt="RGD2025 6"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (7).jpeg" alt="RGD2025 7"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (8).jpeg" alt="RGD2025 8"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (9).jpeg" alt="RGD2025 9"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (10).jpeg" alt="RGD2025 10"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (11).jpeg" alt="RGD2025 11"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (12).jpeg" alt="RGD2025 12"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (13).jpeg" alt="RGD2025 13"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (14).jpeg" alt="RGD2025 14"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (15).jpeg" alt="RGD2025 15"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (16).jpeg" alt="RGD2025 16"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (17).jpeg" alt="RGD2025 17"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (18).jpeg" alt="RGD2025 18"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (19).jpeg" alt="RGD2025 19"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (20).jpeg" alt="RGD2025 20"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (21).jpeg" alt="RGD2025 21"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (22).jpeg" alt="RGD2025 22"></div>
+                    <div class="photo-frame"><img src="./img/retrogamerday2025 fotos/rgd2025 (23).jpeg" alt="RGD2025 23"></div>
+                </div>
+                <div class="meta">Todas as fotos exibidas inteiras e centralizadas</div>
+            </section>
+
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lb" id="lightbox" aria-hidden="true">
+            <button class="close" id="lb-close">Fechar ✕</button>
+            <button class="nav prev" id="lb-prev">◀</button>
+            <img id="lb-img" src="" alt="">
+            <button class="nav next" id="lb-next">▶</button>
+        </div>
+
     </div>
 
-    <!-- Segundo Carrossel -->
-    <div class="gallery-section">
-        <h2>Fotos 2 - 2024 Ano 1</h2>
-        <div id="carousel2" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel2" data-slide-to="1"></li>
-                <li data-target="#carousel2" data-slide-to="2"></li>
-                <li data-target="#carousel2" data-slide-to="3"></li>
-                <li data-target="#carousel2" data-slide-to="4"></li>
-                <li data-target="#carousel2" data-slide-to="5"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./img/carrosel 2/rgd2024 (1).jpeg" alt="Foto 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/carrosel 2/rgd2024 (2).jpeg" alt="Foto 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/carrosel 2/rgd2024 (3).jpeg" alt="Foto 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/carrosel 2/rgd2024 (4).jpeg" alt="Foto 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/carrosel 2/rgd2024 (5).jpeg" alt="Foto 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/carrosel 2/rgd2024 (6).jpeg" alt="Foto 6">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Próxima</span>
-            </a>
-        </div>
-    </div>
-<!-- terceiro Carrossel -->
-    <div class="gallery-section">
-        <h2>Fotos 3 - 2025 Ano 2</h2>
-        <div id="carousel2" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel2" data-slide-to="1"></li>
-                <li data-target="#carousel2" data-slide-to="2"></li>
-                <li data-target="#carousel2" data-slide-to="3"></li>
-                <li data-target="#carousel2" data-slide-to="4"></li>
-                <li data-target="#carousel2" data-slide-to="5"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (1).jpeg" alt="Foto 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (2).jpeg" alt="Foto 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (3).jpeg" alt="Foto 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (4).jpeg" alt="Foto 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (5).jpeg" alt="Foto 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (6).jpeg" alt="Foto 6">
-                </div>
-                   <div class="carousel-item active">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (7).jpeg" alt="Foto 7">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (8).jpeg" alt="Foto 8">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (9).jpeg" alt="Foto 9">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (10).jpeg" alt="Foto 10">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (11).jpeg" alt="Foto 11">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (12).jpeg" alt="Foto 12">
-                </div>   <div class="carousel-item active">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (13).jpeg" alt="Foto 13">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (14).jpeg" alt="Foto 14">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (15).jpeg" alt="Foto 15">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (16).jpeg" alt="Foto 16">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (17).jpeg" alt="Foto 17">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (18).jpeg" alt="Foto 18">
-                </div>   <div class="carousel-item active">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (19).jpeg" alt="Foto 19">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (20).jpeg" alt="Foto 20">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (21).jpeg" alt="Foto 21">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (22).jpeg" alt="Foto 22">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/retrogamerday2025 fotos/rgd2025 (23).jpeg" alt="Foto 23">
-                </div>
-               
-            </div>
-            <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Próxima</span>
-            </a>
-        </div>
-    </div>
+    <script>
+        // Lightbox: abre imagem clicada, navega com setas e fecha com ESC / clique
+        (function(){
+            const frames = Array.from(document.querySelectorAll('.photo-frame img'));
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lb-img');
+            const closeBtn = document.getElementById('lb-close');
+            const prevBtn = document.getElementById('lb-prev');
+            const nextBtn = document.getElementById('lb-next');
+            let idx = -1;
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            function openAt(i){
+                if(i<0 || i>=frames.length) return;
+                idx = i;
+                lbImg.src = frames[i].src;
+                lbImg.alt = frames[i].alt || '';
+                lb.classList.add('show');
+                lb.setAttribute('aria-hidden','false');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeLB(){
+                lb.classList.remove('show');
+                lb.setAttribute('aria-hidden','true');
+                lbImg.src = '';
+                document.body.style.overflow = '';
+            }
+            function prev(){ openAt((idx-1+frames.length)%frames.length); }
+            function next(){ openAt((idx+1)%frames.length); }
 
-    <audio autoplay loop controls>
-        <source src="./music/hoje nao tera gamer over.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
+            frames.forEach((img,i)=>{
+                img.addEventListener('click', ()=> openAt(i));
+                img.style.touchAction = 'manipulation';
+            });
+
+            closeBtn.addEventListener('click', closeLB);
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+
+            lb.addEventListener('click', (e)=>{
+                if(e.target === lb) closeLB();
+            });
+
+            document.addEventListener('keydown', (e)=>{
+                if(!lb.classList.contains('show')) return;
+                if(e.key === 'Escape') closeLB();
+                if(e.key === 'ArrowLeft') prev();
+                if(e.key === 'ArrowRight') next();
+            });
+        })();
+    </script>
+
 </body>
 </html>
-
-
-
-
