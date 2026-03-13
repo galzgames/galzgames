@@ -1,220 +1,804 @@
 <!DOCTYPE html>
-<html lang="en">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
+<html lang="pt-BR">
 <head>
-    <meta name="google-adsense-account" content="ca-pub-3522469415877655">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3522469415877655"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>História dos Videogames</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css"> <!-- Certifique-se de que o caminho esteja correto -->
-    <link rel="icon" href="./img/album.png" type="image/x-icon">
-    
-    
+    <title>HISTÓRIA DOS VIDEOGAMES - MODO 16-BITS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-image: url('./img/back2.avif'); /* Caminho para a sua imagem de fundo */
-            background-size: cover; /* Faz a imagem cobrir todo o fundo */
-            background-position: center; /* Centraliza a imagem de fundo */
-            background-repeat: no-repeat; /* Evita que a imagem se repita */
-            color: rgb(41, 39, 134); /* Cor do texto */
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            min-height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
-            display: flex;
-            flex-direction: column;
+            box-sizing: border-box;
         }
-        .container {
-            flex: 1; /* Faz o container ocupar o espaço restante */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+        
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: #0f0f23;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .history-section {
-            padding: 20px;
-            background-color: rgba(248, 249, 250, 0.9); /* Fundo semi-transparente */
-            border-radius: 10px;
-            margin: 20px;
-            max-width: 1200px;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
-        }
-        .history-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: darkblue; /* Cor do título */
-        }
-        .history-section p {
-            text-align: justify;
-            color: darkgreen; /* Cor dos parágrafos */
-        }
-        .history-section img {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-            border: 5px solid black; /* Adiciona borda preta */
-            border-radius: 10px; /* Adiciona cantos arredondados */
-        }
-        .back-button {
+        
+        .scanlines {
             position: fixed;
-            top: 10px;
-            left: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
             z-index: 1000;
         }
-        .back-button:hover {
-            background-color: #0056b3;
+        
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+            z-index: 999;
         }
-        .history-era {
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #ccc;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
         }
-        .history-era:last-child {
-            border-bottom: none;
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1a1a2e 0%, transparent 100%);
+            border-bottom: 4px solid #ff6b9d;
+            margin-bottom: 30px;
         }
-        .history-era img {
-            margin: 10px 8px;
-            max-width: 220px;
-            border-radius: 10px;
-            border: 3px solid #222;
-            background: #fff;
+        
+        h1 {
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #ff0000, 8px 8px 0 #0000ff;
+            margin-bottom: 15px;
+            animation: flicker 3s infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            90% { opacity: 1; }
+            92% { opacity: 0.3; }
+            94% { opacity: 1; }
+        }
+        
+        .subtitle {
+            color: #00d4ff;
+            font-size: 0.8rem;
+        }
+        
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border: 3px solid #39ff14;
+        }
+        
+        .menu-btn {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            padding: 12px 15px;
+            background: #1a1a2e;
+            color: #fff;
+            border: 3px solid #00d4ff;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        
+        .menu-btn:hover, .menu-btn.active {
+            background: #00d4ff;
+            color: #0f0f23;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00d4ff;
+        }
+        
+        .gen-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .gen-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gen-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,107,157,0.2);
+            border: 3px solid #ff6b9d;
+        }
+        
+        .gen-title {
+            color: #ff6b9d;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 #000;
+        }
+        
+        .gen-year {
+            color: #ffd700;
+            font-size: 0.8rem;
+        }
+        
+        .console-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .console-card {
+            background: #1a1a2e;
+            border: 4px solid #bf00ff;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        
+        .console-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(191,0,255,0.3);
+        }
+        
+        .console-card:active {
+            transform: scale(0.98);
+        }
+        
+        .console-card::before {
+            content: "◆";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #0f0f23;
+            color: #bf00ff;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .console-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: #000;
+            margin-bottom: 15px;
+            border: 2px solid #39ff14;
+            image-rendering: pixelated;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .console-img:hover {
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+        
+        .console-name {
+            color: #39ff14;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .console-desc {
+            font-size: 0.6rem;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .console-highlight {
+            color: #ffd700;
+            margin-top: 10px;
+            font-size: 0.55rem;
+        }
+        
+        .stats-box {
+            background: rgba(0,212,255,0.1);
+            border: 3px solid #00d4ff;
+            padding: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        
+        .stats-box:hover {
+            background: rgba(0,212,255,0.2);
+        }
+        
+        .stats-title {
+            color: #00d4ff;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #00d4ff;
+            font-size: 0.6rem;
+        }
+        
+        .stat-value {
+            color: #ffd700;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 3px solid #39ff14;
+            font-size: 0.6rem;
+            color: #666;
+        }
+        
+        .pixel-decoration {
+            color: #ff6b9d;
+            font-size: 1.5rem;
+            animation: bounce 1s infinite;
             display: inline-block;
         }
-        @media (max-width: 600px) {
-            .history-section {
-                padding: 10px;
-                margin: 10px;
-            }
-            .history-section img {
-                max-width: 100%;
-            }
-            .back-button {
-                padding: 5px 10px;
-                font-size: 14px;
-            }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        @media (max-width: 700px) {
-            .history-era img {
-                max-width: 100%;
-                margin: 10px 0;
-                display: block;
+        
+        /* Audio control */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a1a2e;
+            border: 3px solid #ffd700;
+            padding: 15px;
+            z-index: 2000;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: #ffd700;
+        }
+        
+        .audio-control:hover {
+            background: #ffd700;
+            color: #0f0f23;
+        }
+        
+        @media (max-width: 600px) {
+            .console-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-btn {
+                font-size: 0.5rem;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <button onclick="window.history.back();" class="back-button">Voltar</button>
+    <div class="scanlines"></div>
+    <div class="crt-overlay"></div>
+    
+    <button class="audio-control" onclick="toggleAudio()" id="audioBtn">
+        🔊 SOM: ON
+    </button>
+    
     <div class="container">
-        <div class="history-section">
-            <h2>História dos Videogames</h2>
-
-            <!-- Anos 1950-1960 -->
-            <div class="history-era">
-                <h3>Anos 1950-1960: Os Primeiros Passos</h3>
-                <p>
-                    Os videogames começaram como experimentos científicos. Em 1958, William Higinbotham criou <strong>"Tennis for Two"</strong> em um osciloscópio, considerado um dos primeiros jogos eletrônicos interativos. Em 1962, Steve Russell desenvolveu <strong>"Spacewar!"</strong> no MIT, um dos primeiros jogos para computador.
-                </p>
-                <img src="./img/tennis_for_two.jpg" alt="Tennis for Two">
-                <img src="./img/spacewar.jpg" alt="Spacewar!">
+        <header onclick="playCoinSound()">
+            <h1>HISTÓRIA DOS VIDEOGAMES</h1>
+            <p class="subtitle">MODO 16-BITS ATIVADO</p>
+        </header>
+        
+        <nav class="menu">
+            <button class="menu-btn active" onclick="playSelectSound(); showGen('gen1')">1ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen2')">2ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen3')">3ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen4')">4ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen5')">5ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen6')">6ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen7')">7ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen8')">8ª GEN</button>
+            <button class="menu-btn" onclick="playSelectSound(); showGen('gen9')">9ª GEN</button>
+        </nav>
+        
+        <!-- 1ª Geração -->
+        <section id="gen1" class="gen-section active">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">1ª GERAÇÃO: O INÍCIO</h2>
+                <p class="gen-year">1972 - 1976</p>
             </div>
-
-            <!-- Anos 1970 -->
-            <div class="history-era">
-                <h3>Anos 1970: O Nascimento da Indústria</h3>
-                <p>
-                    A década de 1970 marcou o início da indústria dos videogames. O <strong>Pong</strong> (1972), da Atari, foi o primeiro grande sucesso comercial. O <strong>Magnavox Odyssey</strong> (1972) foi o primeiro console doméstico. O <strong>Atari 2600</strong> (1977) popularizou os jogos em cartucho.
-                </p>
-                <img src="./img/pong.jpg" alt="Pong">
-                <img src="./img/magnavox_odyssey.jpg" alt="Magnavox Odyssey">
-                <img src="./img/atari_2600.jpg" alt="Atari 2600">
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/framemark.vam.ac.uk/1fbc776dde59f346d055b5969d6ed8d94c3de1d8.jpg" alt="Magnavox Odyssey" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">MAGNAVOX ODYSSEY</h3>
+                    <p class="console-desc">O primeiro console doméstico da história! Criado por Ralph Baer, usava cartões de circuito impresso e overlays plásticos na TV.</p>
+                    <p class="console-highlight">★ PRIMEIRO CONSOLE COMERCIAL</p>
+                </div>
             </div>
-
-            <!-- Anos 1980 -->
-            <div class="history-era">
-                <h3>Anos 1980: A Era de Ouro dos Arcades e Consoles</h3>
-                <p>
-                    Os anos 1980 foram marcados pelo boom dos arcades, com clássicos como <strong>Pac-Man</strong>, <strong>Donkey Kong</strong> e <strong>Space Invaders</strong>. Nos lares, o <strong>Nintendo Entertainment System (NES)</strong> e o <strong>Sega Master System</strong> dominaram, trazendo franquias como <strong>Super Mario Bros.</strong> e <strong>Sonic</strong>.
-                </p>
-                <img src="./img/pacman.jpg" alt="Pac-Man">
-                <img src="./img/nes.jpg" alt="Nintendo Entertainment System">
-                <img src="./img/sega_master_system.jpg" alt="Sega Master System">
-                <img src="./img/donkey_kong_arcade.jpg" alt="Donkey Kong Arcade">
+        </section>
+        
+        <!-- 2ª Geração -->
+        <section id="gen2" class="gen-section">
+            <div class="gen-header" onclick="playAtariSound()">
+                <h2 class="gen-title">2ª GERAÇÃO: A ERA DOS CARTUCHOS</h2>
+                <p class="gen-year">1976 - 1983</p>
             </div>
-
-            <!-- Anos 1990 -->
-            <div class="history-era">
-                <h3>Anos 1990: Consoles 16 e 32 bits, e o 3D</h3>
-                <p>
-                    A década de 1990 trouxe gráficos melhores e o início do 3D. O <strong>Super Nintendo (SNES)</strong> e o <strong>Sega Genesis</strong> travaram uma batalha épica. O <strong>PlayStation</strong> (1994) revolucionou com jogos em CD e gráficos 3D, enquanto o <strong>Nintendo 64</strong> trouxe experiências inovadoras como <strong>Super Mario 64</strong>.
-                </p>
-                <img src="./img/snes.jpg" alt="Super Nintendo">
-                <img src="./img/sega_genesis.jpg" alt="Sega Genesis">
-                <img src="./img/playstation.jpg" alt="Sony PlayStation">
-                <img src="./img/nintendo64.jpg" alt="Nintendo 64">
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Atari-2600-Wood-4Sw-Set.jpg/1200px-Atari-2600-Wood-4Sw-Set.jpg" alt="Atari 2600" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">ATARI 2600</h3>
+                    <p class="console-desc">Popularizou os cartuchos intercambiáveis! Space Invaders e Pac-Man entraram nas salas de estar.</p>
+                    <p class="console-highlight">★ 30 MILHÕES DE UNIDADES</p>
+                </div>
             </div>
-
-            <!-- Anos 2000 -->
-            <div class="history-era">
-                <h3>Anos 2000: Consoles Modernos e Jogos Online</h3>
-                <p>
-                    O <strong>PlayStation 2</strong> tornou-se o console mais vendido da história. A <strong>Microsoft</strong> entrou no mercado com o <strong>Xbox</strong>. O <strong>GameCube</strong> e o <strong>Dreamcast</strong> também marcaram época. O <strong>Xbox Live</strong> e o <strong>PlayStation Network</strong> popularizaram o jogo online.
-                </p>
-                <img src="./img/ps2.jpg" alt="PlayStation 2">
-                <img src="./img/xbox.jpg" alt="Xbox">
-                <img src="./img/gamecube.jpg" alt="GameCube">
-                <img src="./img/dreamcast.jpg" alt="Dreamcast">
+        </section>
+        
+        <!-- 3ª Geração -->
+        <section id="gen3" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">3ª GERAÇÃO: O RENASCIMENTO</h2>
+                <p class="gen-year">1983 - 1990</p>
             </div>
-
-            <!-- Anos 2010-2020 -->
-            <div class="history-era">
-                <h3>Anos 2010-2020: Alta Definição, Realidade Virtual e Mobile</h3>
-                <p>
-                    Consoles como <strong>PlayStation 4</strong>, <strong>Xbox One</strong> e <strong>Nintendo Switch</strong> trouxeram gráficos de alta definição e experiências inovadoras. O mercado mobile explodiu com jogos como <strong>Angry Birds</strong> e <strong>Pokémon GO</strong>. A <strong>realidade virtual</strong> e o <strong>streaming</strong> começaram a ganhar espaço.
-                </p>
-                <img src="./img/ps4.jpg" alt="PlayStation 4">
-                <img src="./img/xbox_one.jpg" alt="Xbox One">
-                <img src="./img/nintendo_switch.jpg" alt="Nintendo Switch">
-                <img src="./img/pokemon_go.jpg" alt="Pokémon GO">
-                <img src="./img/oculus_quest.jpg" alt="Oculus Quest VR">
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/cdn.britannica.com/be9110b4434beb53913ea0fe4a75678166f743d4.jpg" alt="NES" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">NINTENDO NES</h3>
+                    <p class="console-desc">Salvou a indústria após a crise de 1983! Mario, Zelda e Metroid nasceram aqui. 61 milhões de unidades vendidas.</p>
+                    <p class="console-highlight">★ RESGATOU OS VIDEOGAMES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/static.wikia.nocookie.net/30c76c22e0b82200b1623ba0dec8f8db58ff40ea" alt="Master System" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">SEGA MASTER SYSTEM</h3>
+                    <p class="console-desc">A entrada da Sega no mercado! Gráficos superiores em alguns aspectos, mas ficou no segundo lugar.</p>
+                    <p class="console-highlight">★ 13 MILHÕES DE UNIDADES</p>
+                </div>
             </div>
-
-            <!-- Atualidade -->
-            <div class="history-era">
-                <h3>Atualidade: O Futuro dos Games</h3>
-                <p>
-                    Hoje, os videogames são uma das maiores formas de entretenimento do mundo, com eSports, jogos em nuvem, inteligência artificial e experiências cada vez mais imersivas. O futuro promete ainda mais inovações!
-                </p>
-                <img src="./img/ps5.jpg" alt="PlayStation 5">
-                <img src="./img/xbox_series_x.jpg" alt="Xbox Series X">
-                <img src="./img/steamdeck.jpg" alt="Steam Deck">
+        </section>
+        
+        <!-- 4ª Geração -->
+        <section id="gen4" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">4ª GERAÇÃO: A GUERRA DOS 16 BITS</h2>
+                <p class="gen-year">1987 - 1996</p>
             </div>
-        </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.etsystatic.com/0de2296604f14d98c6186d6b852a3aa369abe8f4.jpg" alt="Super Nintendo" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">SUPER NINTENDO</h3>
+                    <p class="console-desc">16 bits de pura magia! Modo 7, chips de expansão, clássicos absolutos como Mario World e Zelda: A Link to the Past.</p>
+                    <p class="console-highlight">★ 49 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/bb70d39ab7379a5011db505ff406ca9a2d082406.jpg" alt="Mega Drive" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">SEGA MEGA DRIVE</h3>
+                    <p class="console-desc">O console do Sonic! Blast Processing, jogos mais rápidos e violentos. A rivalidade épica contra a Nintendo.</p>
+                    <p class="console-highlight">★ 30 MILHÕES DE UNIDADES</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5ª Geração -->
+        <section id="gen5" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">5ª GERAÇÃO: A REVOLUÇÃO 3D</h2>
+                <p class="gen-year">1993 - 2002</p>
+            </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i5.walmartimages.com/d0b5d578a35bb05dc2ce6159f92de6dcb86eedf6.jpeg" alt="PlayStation" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">SONY PLAYSTATION</h3>
+                    <p class="console-desc">A Sony domina! CDs, 3D poligonal, Final Fantasy VII, Metal Gear Solid, Resident Evil. 102 milhões de unidades!</p>
+                    <p class="console-highlight">★ LÍDER DA GERAÇÃO</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/cdn11.bigcommerce.com/c5200b1417e186341b1ff28874648214013cff6c.jpg" alt="Nintendo 64" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">NINTENDO 64</h3>
+                    <p class="console-desc">Último console da Nintendo com cartuchos. Super Mario 64 e Ocarina of Time revolucionaram o 3D!</p>
+                    <p class="console-highlight">★ 32 MILHÕES DE UNIDADES</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 6ª Geração -->
+        <section id="gen6" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">6ª GERAÇÃO: A ERA ONLINE</h2>
+                <p class="gen-year">1998 - 2006</p>
+            </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.wired.com/6e1bbb57e7ed29e314edf12340a374f4fd2d9e21.jpg" alt="Dreamcast" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">SEGA DREAMCAST</h3>
+                    <p class="console-desc">O último da Sega! Pioneiro em online, tela no controle (VMU), Shenmue e Sonic Adventure. Infelizmente, o fim de uma era.</p>
+                    <p class="console-highlight">★ 9 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/e3d2f59dec0736692ba4709676e4099fef82d9f7.JPG" alt="PlayStation 2" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">PLAYSTATION 2</h3>
+                    <p class="console-desc">O MAIS VENDIDO DA HISTÓRIA! 155 milhões de unidades, DVD player, God of War, GTA San Andreas, Shadow of the Colossus.</p>
+                    <p class="console-highlight">★ 155 MILHÕES - RECORDE!</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/storage.googleapis.com/7eafa2e4ae54e1c92d67a18745af66316ef36cbe.jpg" alt="GameCube" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">NINTENDO GAMECUBE</h3>
+                    <p class="console-desc">Design em cubo, discos mini-DVD, controle aclamado. Smash Bros Melee, Metroid Prime, Wind Waker.</p>
+                    <p class="console-highlight">★ 21 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i5.walmartimages.com/10ac6ff64618aabe88350ecccfce630a8094178f.jpeg" alt="Xbox Original" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">XBOX ORIGINAL</h3>
+                    <p class="console-desc">A Microsoft entra no jogo! HDD integrado, Xbox Live pioneiro, Halo: Combat Evolved define os FPS.</p>
+                    <p class="console-highlight">★ 24 MILHÕES DE UNIDADES</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 7ª Geração -->
+        <section id="gen7" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">7ª GERAÇÃO: O MOVIMENTO E O HD</h2>
+                <p class="gen-year">2004 - 2013</p>
+            </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/pisces.bbystatic.com/c2cdf8a87c825bf4998354cc876af25759a8d512.jpg" alt="Wii" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">NINTENDO WII</h3>
+                    <p class="console-desc">Revolução dos controles de movimento! Wii Remote, público casual, Wii Sports, Mario Galaxy. 101 milhões!</p>
+                    <p class="console-highlight">★ 101 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/d3f18aac2fbc179505bb3a30be9b57080984cbb8.png" alt="PlayStation 3" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">PLAYSTATION 3</h3>
+                    <p class="console-desc">Blu-ray, gráficos HD, processador Cell complexo. The Last of Us, Uncharted, Gran Turismo 5.</p>
+                    <p class="console-highlight">★ 87 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.hswstatic.com/2537ec61ec2235083d9b7906d0b05b8c4135f758" alt="Xbox 360" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">XBOX 360</h3>
+                    <p class="console-desc">Xbox Live maduro, achievements, Gears of War, Halo 3, Mass Effect. Líder nos primeiros anos.</p>
+                    <p class="console-highlight">★ 84 MILHÕES DE UNIDADES</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 8ª Geração -->
+        <section id="gen8" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">8ª GERAÇÃO: SOCIAL, STREAMING E HÍBRIDO</h2>
+                <p class="gen-year">2012 - 2020</p>
+            </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/gmedia.playstation.com/2f756b713643aca23dcc69cd0e8071c5b820764d" alt="PlayStation 4" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">PLAYSTATION 4</h3>
+                    <p class="console-desc">Dominou com exclusivos! Bloodborne, God of War 2018, Spider-Man, The Last of Us Part II. 117 milhões!</p>
+                    <p class="console-highlight">★ 117 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/xboxwire.thesourcemediaassets.com/ca3ed8eae75b6eadbf3c0ed054c4ccaea3909a45.png" alt="Xbox One" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">XBOX ONE</h3>
+                    <p class="console-desc">Foco em mídia e TV, pivotou para Game Pass. Retrocompatibilidade, Forza Horizon, Halo 5.</p>
+                    <p class="console-highlight">★ 51 MILHÕES DE UNIDADES</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/ss7.vzw.com/822ec5d2b0b2e39e82172f0d3673d6fabdb6eb7d" alt="Nintendo Switch" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">NINTENDO SWITCH</h3>
+                    <p class="console-desc">Console HÍBRIDO revolucionário! Portátil e de mesa, Joy-Con, Zelda: Breath of the Wild, Animal Crossing. 140+ milhões!</p>
+                    <p class="console-highlight">★ 140+ MILHÕES - SUCESSO!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 9ª Geração -->
+        <section id="gen9" class="gen-section">
+            <div class="gen-header" onclick="playPowerUpSound()">
+                <h2 class="gen-title">9ª GERAÇÃO: RAY TRACING, SSD E NUVEM</h2>
+                <p class="gen-year">2020 - PRESENTE</p>
+            </div>
+            <div class="console-grid">
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i5.walmartimages.com/f444eefdbbb8f51558a8bf8451cbc7a213d7e50c.jpeg" alt="PlayStation 5" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">PLAYSTATION 5</h3>
+                    <p class="console-desc">SSD ultrarrápido, ray tracing real, DualSense com feedback háptico. Demon's Souls, Ratchet & Clank, God of War Ragnarök.</p>
+                    <p class="console-highlight">★ 50+ MILHÕES (EM CRESCIMENTO)</p>
+                </div>
+                <div class="console-card" onclick="playCoinSound()">
+                    <img src="https://kimi-web-img.moonshot.cn/img/cms-assets.xboxservices.com/59f4fddefd2c5cba6ff66508562791b2a92169e4.png" alt="Xbox Series X" class="console-img" onclick="play1UpSound(event)">
+                    <h3 class="console-name">XBOX SERIES X/S</h3>
+                    <p class="console-desc">Potência bruta (12 TFLOPS), Quick Resume, Game Pass central. Retrocompatibilidade com 4 gerações!</p>
+                    <p class="console-highlight">★ GAME PASS: 25+ MILHÕES</p>
+                </div>
+            </div>
+            
+            <div class="stats-box" onclick="playCoinSound()">
+                <h3 class="stats-title">◆ ESTATÍSTICAS DA 9ª GERAÇÃO ◆</h3>
+                <div class="stat-item">
+                    <span>Resolução:</span>
+                    <span class="stat-value">4K / 8K</span>
+                </div>
+                <div class="stat-item">
+                    <span>Taxa de Quadros:</span>
+                    <span class="stat-value">Até 120 FPS</span>
+                </div>
+                <div class="stat-item">
+                    <span>Tecnologia:</span>
+                    <span class="stat-value">Ray Tracing + SSD</span>
+                </div>
+                <div class="stat-item">
+                    <span>Serviço em Nuvem:</span>
+                    <span class="stat-value">Game Pass / PS Plus</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer onclick="playSecretSound()">
+            <span class="pixel-decoration">◆</span>
+            <p>© 2026 - HISTÓRIA DOS VIDEOGAMES</p>
+            <p style="margin-top: 10px; color: #39ff14;">PRESSIONE START PARA JOGAR</p>
+            <span class="pixel-decoration">◆</span>
+        </footer>
     </div>
+    
+    <script>
+        // Audio Context
+        let audioContext = null;
+        let audioEnabled = true;
+        
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            const btn = document.getElementById('audioBtn');
+            btn.textContent = audioEnabled ? '🔊 SOM: ON' : '🔇 SOM: OFF';
+            if (audioEnabled) {
+                playCoinSound();
+            }
+        }
+        
+        // Som de moeda do Mario (Bing!)
+        function playCoinSound() {
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Frequência tipo "ding" de moeda
+            oscillator.frequency.setValueAtTime(987, audioContext.currentTime); // B5
+            oscillator.frequency.setValueAtTime(1318, audioContext.currentTime + 0.08); // E6
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+        
+        // Som de seleção de menu (Sonic/SEGA style)
+        function playSelectSound() {
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(880, audioContext.currentTime + 0.1);
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.15);
+        }
+        
+        // Som de Power-Up (Super Mario)
+        function playPowerUpSound() {
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const notes = [523, 659, 783, 1046]; // C5, E5, G5, C6
+            const now = audioContext.currentTime;
+            
+            notes.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(freq, now + index * 0.1);
+                
+                gainNode.gain.setValueAtTime(0.2, now + index * 0.1);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + index * 0.1 + 0.15);
+                
+                oscillator.start(now + index * 0.1);
+                oscillator.stop(now + index * 0.1 + 0.15);
+            });
+        }
+        
+        // Som de 1-Up (Mario)
+        function play1UpSound(event) {
+            if (event) event.stopPropagation();
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const notes = [659, 783, 987, 1318, 1568, 1975, 2637]; // Escala ascendente rápida
+            const now = audioContext.currentTime;
+            
+            notes.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(freq, now + index * 0.05);
+                
+                gainNode.gain.setValueAtTime(0.15, now + index * 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + index * 0.05 + 0.08);
+                
+                oscillator.start(now + index * 0.05);
+                oscillator.stop(now + index * 0.05 + 0.08);
+            });
+        }
+        
+        // Som secreto (Konami Code style)
+        function playSecretSound() {
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const now = audioContext.currentTime;
+            
+            // Sequência icônica
+            const sequence = [
+                {freq: 880, duration: 0.1}, // A5
+                {freq: 880, duration: 0.1},
+                {freq: 880, duration: 0.1},
+                {freq: 698, duration: 0.15}, // F5
+                {freq: 1046, duration: 0.2}  // C6
+            ];
+            
+            let time = now;
+            sequence.forEach(note => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(note.freq, time);
+                
+                gainNode.gain.setValueAtTime(0.3, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, time + note.duration);
+                
+                oscillator.start(time);
+                oscillator.stop(time + note.duration);
+                
+                time += note.duration;
+            });
+        }
+        
+        // Som de hover (8-bit blip)
+        function playHoverSound() {
+            if (!audioEnabled) return;
+            initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.05);
+        }
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        // Play Atari local mp3 with fallback to synth
+        function playAtariSound() {
+            if (!audioEnabled) return;
+            initAudio();
 
-</footer>
-
-<!-- Música com loop infinito -->
-<audio autoplay loop controls>
-    <source src="./music/hoje nao tera gamer over.mp3" type="audio/mp3">
-    Seu navigator não suporta o elemento de áudio.
+            const url = 'mp3/atari.mp3';
+            const audio = new Audio(url);
+            audio.volume = 0.75;
+            audio.play().catch(() => {
+                // fallback synth: low retro pulse
+                const now = audioContext.currentTime;
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(110, now);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 1.0);
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.start(now);
+                osc.stop(now + 1.0);
+            });
+        }
+        
+        function showGen(genId) {
+            const sections = document.querySelectorAll('.gen-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const buttons = document.querySelectorAll('.menu-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(genId).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Flash effect
+            document.body.style.background = '#1a1a2e';
+            setTimeout(() => {
+                document.body.style.background = '#0f0f23';
+            }, 100);
+        }
+        
+        // Adicionar sons de hover em todos os elementos interativos
+        document.addEventListener('DOMContentLoaded', () => {
+            const interactiveElements = document.querySelectorAll('button, .console-card, .console-img, .stats-box, footer');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', playHoverSound);
+            });
+            
+            // Inicializar áudio no primeiro clique (política de autoplay)
+            document.addEventListener('click', initAudio, { once: true });
+        });
+        
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
-
