@@ -715,6 +715,18 @@ img {
     min-width: 120px;
 }
 
+/* Força o pôster a ficar como coluna central com largura fixa dentro do container */
+.evento-info-col.evento-poster {
+    flex: 0 0 420px; /* largura fixa para o pôster central */
+    max-width: 420px;
+}
+
+.evento-info-col.evento-poster .evento-poster-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+}
+
 .evento-info-img {
     width: 100%;
     max-width: 120px;
