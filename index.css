@@ -951,6 +951,49 @@ img {
     }
 }
 
+/* --- Image border and sizing overrides --- */
+/* Larger tiles for event images (desktop) and visible borders */
+.evento-info-img {
+    width: 160px; /* increased from 120px */
+    height: 160px;
+    max-width: none;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 6px solid #c0c0c0; /* silver border */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 2px 8px #ff004f55;
+}
+
+/* Poster central maior */
+.evento-info-col.evento-poster {
+    flex: 0 0 520px; /* slightly wider poster */
+    max-width: 520px;
+}
+.evento-info-col.evento-poster .evento-poster-img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    border-radius: 20px;
+    border: 8px solid #c0c0c0; /* silver border */
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 4px 12px #ffb30044;
+}
+
+@media (max-width: 900px) {
+    .evento-info-img {
+        width: 110px; /* reduced for smaller screens */
+        height: 110px;
+        border-width: 4px;
+    }
+    .evento-info-col.evento-poster {
+        flex: 1 1 auto;
+        max-width: 96vw;
+    }
+    .evento-info-col.evento-poster .evento-poster-img {
+        max-width: 96vw;
+        border-width: 6px;
+    }
+}
+
+
 /* Melhore a experiência mobile para index.html */
 /* filepath: d:\galz games\galz games site\index.css */
 
@@ -1020,6 +1063,60 @@ body {
     border: 2px solid #1c649f33;
     box-shadow: 0 2px 8px #007bff22;
     background: #000;
+}
+
+/* Instagram-style square video box and better exposure */
+.evento-youtube-box {
+    max-width: 720px; /* limit container width for larger displays */
+    padding: 24px;
+    background: linear-gradient(180deg, #f8fbff 0%, #eaf4ff 100%);
+    border-radius: 18px;
+}
+.evento-youtube-video {
+    width: 100%;
+    max-width: 420px; /* vertical display width */
+    aspect-ratio: 4/5; /* vertical (width:height = 4:5) */
+    overflow: hidden;
+    border-radius: 16px;
+    margin: 8px 0;
+    box-shadow: 0 12px 34px rgba(0,0,0,0.45), 0 4px 12px #ffb30022;
+    border: 6px solid #c0c0c0; /* silver border to match images */
+    background: #000;
+}
+.evento-youtube-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* Ensure video element fills the vertical box and captions show */
+.evento-youtube-video video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Optional: style HTML5 captions (limited browser support) */
+.evento-youtube-video ::cue {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.9em;
+    padding: 2px 6px;
+    text-shadow: none;
+}
+
+@media (max-width: 900px) {
+    .evento-youtube-box {
+        padding: 16px;
+        max-width: 96vw;
+    }
+    .evento-youtube-video {
+        max-width: 96vw;
+        aspect-ratio: 4/5;
+        border-width: 4px;
+    }
 }
 
 @media (max-width: 700px) {
