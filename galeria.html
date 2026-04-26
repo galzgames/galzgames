@@ -5,104 +5,111 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>GALERIA — Retro Gamer Day</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" href="./img/album.png" type="image/x-icon">
     <style>
-        /* Adapted from inicio visual theme (CRT + neon) */
-        *{box-sizing:border-box;margin:0;padding:0}
-        html,body{height:100%;background:#0f0f23;color:#fff;font-family:'Press Start 2P',cursive}
-        /* scanlines removed */
-        .crt-overlay{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.45) 100%);pointer-events:none;z-index:999}
-        .container{max-width:1200px;margin:0 auto;padding:28px;position:relative;z-index:10}
-        header{text-align:center;padding:28px;background:linear-gradient(180deg,#0b1120 0%,transparent 100%);border-bottom:4px solid #ff6b9d;margin-bottom:22px}
-        header h1{color:#ffd700;font-size:clamp(1.2rem,4vw,2rem);text-shadow:4px 4px 0 #ff0000,8px 8px 0 #0000ff}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Press Start 2P',cursive;background:#0f0f23;color:#fff;overflow-x:hidden}
+        .crt-overlay{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:999}
+        .container{max-width:1200px;margin:0 auto;padding:20px;position:relative;z-index:10}
+        header{text-align:center;padding:40px 20px;background:linear-gradient(180deg,#1a1a2e 0%,transparent 100%);border-bottom:4px solid #ff6b9d;margin-bottom:30px}
+        header h1{font-size:clamp(1.2rem,4vw,2.5rem);color:#ffd700;text-shadow:4px 4px 0 #ff0000,8px 8px 0 #0000ff;margin-bottom:15px}
         .subtitle{color:#00d4ff;font-size:0.8rem}
-
-        .menu{display:flex;gap:8px;justify-content:center;margin:18px 0;padding:12px;background:rgba(0,0,0,0.45);border:3px solid #39ff14}
-        .menu a{color:#fff;background:#1a1a2e;padding:10px 12px;border:3px solid #00d4ff;text-decoration:none;font-size:0.6rem}
+        .menu{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px;padding:20px;background:rgba(0,0,0,0.5);border:3px solid #39ff14}
+        .menu a{font-size:0.6rem;padding:12px 15px;background:#1a1a2e;color:#fff;border:3px solid #00d4ff;text-decoration:none}
         .menu a:hover{background:#00d4ff;color:#0f0f23}
 
-        .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
-        .photo-card{background:#101224;border:3px solid #bf00ff;padding:14px;border-radius:14px;cursor:pointer}
-        /* No hover effect on images/cards for clean display */
-        .photo-card:hover{transform:none;box-shadow:none}
-        .photo-card img{width:100%;height:360px;object-fit:cover;border-radius:10px;background:#000;display:block;box-shadow:none;filter:none}
-        .photo-meta{margin-top:12px;color:#ccc;font-size:0.72rem;text-align:center}
-
-        @media(max-width:900px){.photo-card img{height:240px}}@media(max-width:480px){.photo-card img{height:180px}}
+        /* Grid & cards copied from inicio visual */
+        .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-bottom:30px}
+        .photo-card{background:#1a1a2e;border:4px solid #bf00ff;padding:20px;position:relative;transition:transform 0.2s;cursor:pointer;border-radius:14px}
+        .photo-card:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 30px rgba(191,0,255,0.25)}
+        .photo-card::before{content:"◆";position:absolute;top:-15px;left:20px;background:#0f0f23;color:#bf00ff;padding:0 10px;font-size:1.2rem}
+        .photo-card img{width:100%;height:220px;object-fit:cover;background:#000;margin-bottom:15px;border:2px solid #39ff14;border-radius:10px;display:block}
+        .photo-meta{color:#ccc;font-size:0.72rem;text-align:center}
+        @media(max-width:900px){.photo-card img{height:180px}}@media(max-width:480px){.photo-card img{height:140px}}
 
         /* Lightbox */
         .lb{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.92);z-index:99999;padding:20px}
         .lb.show{display:flex}.lb img{max-width:95%;max-height:95%;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.7)}
         .lb .close,.lb .nav{position:absolute;background:rgba(255,255,255,0.06);border:none;color:#fff;padding:10px 12px;border-radius:8px;cursor:pointer;backdrop-filter:blur(4px)}
         .lb .close{top:18px;right:18px}.lb .nav.prev{left:18px;top:50%;transform:translateY(-50%)}.lb .nav.next{right:18px;top:50%;transform:translateY(-50%)}
+
+        footer{text-align:center;padding:30px;margin-top:50px;border-top:3px solid #39ff14;font-size:0.6rem;color:#666}
     </style>
 </head>
 <body>
-    <!-- scanlines removed -->
     <div class="crt-overlay"></div>
-
     <div class="container">
         <header>
             <h1>GALERIA — Retro Gamer Day</h1>
-<br><br>
-            <p class="subtitle">fotos games</p>
+            <p class="subtitle">FOTOS DO EVENTO</p>
         </header>
-       
+
+        <nav class="menu">
+            <a href="index.html">Início</a>
+          
+        </nav>
+
         <main>
-            <section style="margin-bottom:28px">
-                <h2 style="color:#ff6b9d;margin-bottom:12px;text-align:center">Fotos 2024 — Retrogamer Day</h2>
-                <div class="gallery-grid" id="gallery-2024">
-                    <div class="photo-card"><img src="./img/rgd2024 (1).jpg" alt="RGD2024 1"><div class="photo-meta">RGD2024 1</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (2).jpg" alt="RGD2024 2"><div class="photo-meta">RGD2024 2</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (3).jpg" alt="RGD2024 3"><div class="photo-meta">RGD2024 3</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (4).jpg" alt="RGD2024 4"><div class="photo-meta">RGD2024 4</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (5).jpg" alt="RGD2024 5"><div class="photo-meta">RGD2024 5</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (6).jpg" alt="RGD2024 6"><div class="photo-meta">RGD2024 6</div></div>
-                    <div class="photo-card"><img src="./img/rgd2024 (7).jpg" alt="RGD2024 7"><div class="photo-meta">RGD2024 7</div></div>
+            <section class="gen-section active">
+                <div class="gen-header">
+                    <h2 class="gen-title" style="color:#ff6b9d;text-align:center;margin-bottom:12px">Fotos retrogamerday2025</h2>
+                </div>
+
+                <div class="gallery-grid" id="gallery-selected">
+                    <!-- photos inserted below -->
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (1).jpeg" alt="rgd2024 (1)"><div class="photo-meta">rgd2024 (1)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (1).jpg" alt="rgd2024 (1)"><div class="photo-meta">rgd2024 (1)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (2).jpeg" alt="rgd2024 (2)"><div class="photo-meta">rgd2024 (2)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (2).jpg" alt="rgd2024 (2)"><div class="photo-meta">rgd2024 (2)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (3).jpeg" alt="rgd2024 (3)"><div class="photo-meta">rgd2024 (3)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (3).jpg" alt="rgd2024 (3)"><div class="photo-meta">rgd2024 (3)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (4).jpeg" alt="rgd2024 (4)"><div class="photo-meta">rgd2024 (4)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (4).jpg" alt="rgd2024 (4)"><div class="photo-meta">rgd2024 (4)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (5).jpeg" alt="rgd2024 (5)"><div class="photo-meta">rgd2024 (5)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (5).jpg" alt="rgd2024 (5)"><div class="photo-meta">rgd2024 (5)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (6).jpeg" alt="rgd2024 (6)"><div class="photo-meta">rgd2024 (6)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (6).jpg" alt="rgd2024 (6)"><div class="photo-meta">rgd2024 (6)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (7).jpeg" alt="rgd2024 (7)"><div class="photo-meta">rgd2024 (7)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2024 (7).jpg" alt="rgd2024 (7)"><div class="photo-meta">rgd2024 (7)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (10).jpeg" alt="rgd2025 (10)"><div class="photo-meta">rgd2025 (10)</div></div>
+
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (11).jpeg" alt="rgd2025 (11)"><div class="photo-meta">rgd2025 (11)</div></div>
+
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (12).jpeg" alt="rgd2025 (12)"><div class="photo-meta">rgd2025 (12)</div></div>
+
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (13).jpeg" alt="rgd2025 (13)"><div class="photo-meta">rgd2025 (13)</div></div>
+                   
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (14).jpeg" alt="rgd2025 (14)"><div class="photo-meta">rgd2025 (14)</div></div>
+
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (15).jpeg" alt="rgd2025 (15)"><div class="photo-meta">rgd2025 (15)</div></div>
+
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (16).jpeg" alt="rgd2025 (16)"><div class="photo-meta">rgd2025 (16)</div></div>
+                   
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (17).jpeg" alt="rgd2025 (17)"><div class="photo-meta">rgd2025 (17)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (18).jpeg" alt="rgd2025 (18)"><div class="photo-meta">rgd2025 (18)</div></div>
+                   
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (19).jpeg" alt="rgd2025 (19)"><div class="photo-meta">rgd2025 (19)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (2).jpeg" alt="rgd2025 (2)"><div class="photo-meta">rgd2025 (2)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (20).jpeg" alt="rgd2025 (20)"><div class="photo-meta">rgd2025 (20)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (21).jpeg" alt="rgd2025 (21)"><div class="photo-meta">rgd2025 (21)</div></div>
+                    
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (22).jpeg" alt="rgd2025 (22)"><div class="photo-meta">rgd2025 (22)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (23).jpeg" alt="rgd2025 (23)"><div class="photo-meta">rgd2025 (23)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (3).jpeg" alt="rgd2025 (3)"><div class="photo-meta">rgd2025 (3)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (4).jpeg" alt="rgd2025 (4)"><div class="photo-meta">rgd2025 (4)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (5).jpeg" alt="rgd2025 (5)"><div class="photo-meta">rgd2025 (5)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (6).jpeg" alt="rgd2025 (6)"><div class="photo-meta">rgd2025 (6)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (7).jpeg" alt="rgd2025 (7)"><div class="photo-meta">rgd2025 (7)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (8).jpeg" alt="rgd２０２５ (８)"><div class="photo-meta">rgd２０２５ (８)</div></div>
+                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/rgd2025 (9).jpeg" alt="rgd2025 (9)"><div class="photo-meta">rgd2025 (9)</div></div>
+                    
                 </div>
             </section>
 
-            <section style="margin-bottom:28px">
-                <h2 style="color:#ff6b9d;margin-bottom:12px;text-align:center">Fotos — Carrossel 2</h2>
-                <div class="gallery-grid" id="gallery-carrossel">
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (1).jpeg" alt="Carrosel 1"><div class="photo-meta">Carrosel 1</div></div>
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (2).jpeg" alt="Carrosel 2"><div class="photo-meta">Carrosel 2</div></div>
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (3).jpeg" alt="Carrosel 3"><div class="photo-meta">Carrosel 3</div></div>
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (4).jpeg" alt="Carrosel 4"><div class="photo-meta">Carrosel 4</div></div>
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (5).jpeg" alt="Carrosel 5"><div class="photo-meta">Carrosel 5</div></div>
-                    <div class="photo-card"><img src="./img/carrosel 2/rgd2024 (6).jpeg" alt="Carrosel 6"><div class="photo-meta">Carrosel 6</div></div>
-                </div>
-            </section>
-
-            <section style="margin-bottom:28px">
-                <h2 style="color:#ff6b9d;margin-bottom:12px;text-align:center">Fotos 2025 — Retrogamer Day</h2>
-                <div class="gallery-grid" id="gallery-2025">
-                    <!-- Photos will be the same sources, visually styled as cards -->
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (1)_v.jpg" alt="RGD2025 1"><div class="photo-meta">RGD2025 1</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (2)_v.jpg" alt="RGD2025 2"><div class="photo-meta">RGD2025 2</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (3)_v.jpg" alt="RGD2025 3"><div class="photo-meta">RGD2025 3</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (4)_v.jpg" alt="RGD2025 4"><div class="photo-meta">RGD2025 4</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (5)_v.jpg" alt="RGD2025 5"><div class="photo-meta">RGD2025 5</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (6)_v.jpg" alt="RGD2025 6"><div class="photo-meta">RGD2025 6</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (7)_v.jpg" alt="RGD2025 7"><div class="photo-meta">RGD2025 7</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (8)_v.jpg" alt="RGD2025 8"><div class="photo-meta">RGD2025 8</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (9)_v.jpg" alt="RGD2025 9"><div class="photo-meta">RGD2025 9</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (10)_v.jpg" alt="RGD2025 10"><div class="photo-meta">RGD2025 10</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (11)_v.jpg" alt="RGD2025 11"><div class="photo-meta">RGD2025 11</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (12)_v.jpg" alt="RGD2025 12"><div class="photo-meta">RGD2025 12</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (13)_v.jpg" alt="RGD2025 13"><div class="photo-meta">RGD2025 13</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (14)_v.jpg" alt="RGD2025 14"><div class="photo-meta">RGD2025 14</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (15)_v.jpg" alt="RGD2025 15"><div class="photo-meta">RGD2025 15</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (16)_v.jpg" alt="RGD2025 16"><div class="photo-meta">RGD2025 16</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (17)_v.jpg" alt="RGD2025 17"><div class="photo-meta">RGD2025 17</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (18)_v.jpg" alt="RGD2025 18"><div class="photo-meta">RGD2025 18</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (19)_v.jpg" alt="RGD2025 19"><div class="photo-meta">RGD2025 19</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (20)_v.jpg" alt="RGD2025 20"><div class="photo-meta">RGD2025 20</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (21)_v.jpg" alt="RGD2025 21"><div class="photo-meta">RGD2025 21</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (22)_v.jpg" alt="RGD2025 22"><div class="photo-meta">RGD2025 22</div></div>
-                    <div class="photo-card"><img src="./img/retrogamerday2025 fotos/verticalized/rgd2025 (23)_v.jpg" alt="RGD2025 23"><div class="photo-meta">RGD2025 23</div></div>
-                </div>
-            </section>
         </main>
 
         <!-- Lightbox -->
@@ -113,39 +120,27 @@
             <button class="nav next" id="lb-next">▶</button>
         </div>
 
+        <footer>Retro Gamer Day — Galeria</footer>
     </div>
 
-        <script>
-        // Lightbox (same behavior as before)
-        (function(){
-            const frames = Array.from(document.querySelectorAll('.photo-card img'));
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lb-img');
-            const closeBtn = document.getElementById('lb-close');
-            const prevBtn = document.getElementById('lb-prev');
-            const nextBtn = document.getElementById('lb-next');
-            let idx = -1;
-
-            function openAt(i){
-                if(i<0 || i>=frames.length) return;
-                idx = i;
-                lbImg.src = frames[i].src;
-                lbImg.alt = frames[i].alt || '';
-                lb.classList.add('show');
-                lb.setAttribute('aria-hidden','false');
-                document.body.style.overflow = 'hidden';
-            }
-            function closeLB(){ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; document.body.style.overflow=''; }
-            function prev(){ openAt((idx-1+frames.length)%frames.length); }
-            function next(){ openAt((idx+1)%frames.length); }
-
-            frames.forEach((img,i)=>{ img.addEventListener('click', ()=> openAt(i)); img.style.touchAction='manipulation'; });
-            closeBtn.addEventListener('click', closeLB);
-            prevBtn.addEventListener('click', prev);
-            nextBtn.addEventListener('click', next);
-            lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
-            document.addEventListener('keydown', (e)=>{ if(!lb.classList.contains('show')) return; if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') prev(); if(e.key==='ArrowRight') next(); });
-        })();
+    <script>
+    (function(){
+        const frames = Array.from(document.querySelectorAll('.photo-card img'));
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const closeBtn = document.getElementById('lb-close');
+        const prevBtn = document.getElementById('lb-prev');
+        const nextBtn = document.getElementById('lb-next');
+        let idx = -1;
+        function openAt(i){ if(i<0||i>=frames.length) return; idx=i; lbImg.src=frames[i].src; lbImg.alt=frames[i].alt||''; lb.classList.add('show'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+        function closeLB(){ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; document.body.style.overflow=''; }
+        function prev(){ openAt((idx-1+frames.length)%frames.length); }
+        function next(){ openAt((idx+1)%frames.length); }
+        frames.forEach((img,i)=>{ img.addEventListener('click',()=>openAt(i)); img.style.touchAction='manipulation'; });
+        closeBtn.addEventListener('click',closeLB); prevBtn.addEventListener('click',prev); nextBtn.addEventListener('click',next);
+        lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLB(); });
+        document.addEventListener('keydown',(e)=>{ if(!lb.classList.contains('show')) return; if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') prev(); if(e.key==='ArrowRight') next(); });
+    })();
     </script>
 </body>
 </html>
