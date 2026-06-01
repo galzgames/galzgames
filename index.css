@@ -689,9 +689,9 @@ img {
 }
 
 .evento-album img {
-    max-width: 120px;
+    max-width: 220px;
     margin: 0 8px;
-    border-radius: 12px;
+   
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
@@ -1194,9 +1194,9 @@ body {
 }
 
 .evento-album img {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
     object-fit: cover;
 }
 
