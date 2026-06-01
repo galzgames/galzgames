@@ -1318,7 +1318,7 @@ main {
 }
 
 .left-gif, .center-gif, .right-gif {
-    width: 80px;
+    width: 120px;
     height: auto;
     border-radius: 10px;
     margin: 0 8px;
