@@ -691,6 +691,8 @@ img {
 .evento-album img {
     max-width: 220px;
     margin: 0 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
    
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
